@@ -17,9 +17,16 @@ const sequelize = new Sequelize(
       idle: 10000
     },
     define: {
-      timestamps: true, // Enable timestamps globally
-      underscored: true // Use snake_case for column names
-    }
+      timestamps: true,       // Enable timestamps globally
+      createdAt: 'created_at', // Explicit snake_case names
+      updatedAt: 'updated_at',
+      underscored: true,      // Convert camelCase to snake_case
+      freezeTableName: true,  // Prevent pluralization
+      paranoid: false,        // Disable soft deletes unless needed
+      charset: 'utf8mb4',
+      collate: 'utf8mb4_uca1400_ai_ci' // Match your DB collation
+    },
+    timezone: '+00:00' // Use UTC timezone
   }
 );
 

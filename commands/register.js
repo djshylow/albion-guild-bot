@@ -10,7 +10,7 @@ module.exports = {
       option.setName('albion_name')
         .setDescription('Your exact Albion Online character name')
         .setRequired(true)
-		.setMaxLength(30)
+        .setMaxLength(30)
     ),
 
   async execute(interaction) {
@@ -53,55 +53,45 @@ module.exports = {
 
       // 🔔 Send alert if guild is not registered
       if (!guildData) {
-		const logChannel = interaction.guild.channels.cache.get('1378000555422646342');
-		const modRoleId = '1378004212168003694';
-		if (logChannel) {
-			const alertEmbed = new EmbedBuilder()
-			  .setColor(0xff0000)
-			  .setTitle('🚨 Unregistered Guild Registration Attempt')
-			  .setDescription(`A user tried to register from a guild that is not registered.`)
-			  .addFields(
-				{ name: 'User', value: `<@${discordId}> (${interaction.user.tag})`, inline: true },
-				{ name: 'Albion Name', value: playerInfo.Name, inline: true },
-				{ name: 'Guild Name', value: playerInfo.GuildName || 'Unknown', inline: true },
-				{ name: 'Guild ID', value: playerInfo.GuildId || 'N/A', inline: true }
-			  )
-			  .setTimestamp();
-			logChannel.send({ embeds: [alertEmbed] });
-			await logChannel.send(`<@&${modRoleId}>`);
+        const logChannel = interaction.guild.channels.cache.get('1378000555422646342');
+        const modRoleId = '1378004212168003694';
+        if (logChannel) {
+          const alertEmbed = new EmbedBuilder()
+            .setColor(0xff0000)
+            .setTitle('🚨 Unregistered Guild Registration Attempt')
+            .setDescription(`A user tried to register from a guild that is not registered.`)
+            .addFields(
+              { name: 'User', value: `<@${discordId}> (${interaction.user.tag})`, inline: true },
+              { name: 'Albion Name', value: playerInfo.Name, inline: true },
+              { name: 'Guild Name', value: playerInfo.GuildName || 'Unknown', inline: true },
+              { name: 'Guild ID', value: playerInfo.GuildId || 'N/A', inline: true }
+            )
+            .setTimestamp();
+          logChannel.send({ embeds: [alertEmbed] });
+          await logChannel.send(`<@&${modRoleId}>`);
         }
       }
 
-      let guildTag = '';
-	  let newNickname = playerInfo.Name;
       let roleAdded = 'None';
+      let newNickname = playerInfo.Name;
+      let member;
 
-      if (guildData?.guildTag) {
-        guildTag = `[${guildData.guildTag}]`;
-        newNickname = `${guildTag} ${playerInfo.Name}`.trim();
+      try {
+        member = await interaction.guild.members.fetch(discordId, { force: true });
+
+        if (config.editNick) {
+          if (config.showGuildTag && guildData?.guildTag) {
+            newNickname = `[${guildData.guildTag}] ${playerInfo.Name}`;
+          }
+          await member.setNickname(newNickname).catch(() => {});
+        }
+      } catch (error) {
+        console.error('Error fetching or setting nickname:', error);
       }
 
-      // Set nickname if enabled
-	let member;
-
-		try {
-		  member = await interaction.guild.members.fetch(discordId, { force: true });
-
-		  if (config.editNick) {
-			if (config.showGuildTag && guildData?.guildTag) {
-			  newNickname = `[${guildData.guildTag}] ${playerInfo.Name}`;
-			}
-
-			await member.setNickname(newNickname).catch(() => {});
-		  }
-		} catch (error) {
-		  console.error('Error fetching or setting nickname:', error);
-		}
-
-		if (!member) {
-		  return interaction.editReply({ content: 'Member not found in the guild.' });
-		}
-
+      if (!member) {
+        return interaction.editReply({ content: 'Member not found in the guild.' });
+      }
 
       // Handle role assignment
       try {
