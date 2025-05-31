@@ -88,11 +88,40 @@ To set up and run the bot on your own server, follow these steps:
     Create a file named `.env` in the root directory of your project and add the following:
 
     ```env
-    DISCORD_TOKEN=YOUR_DISCORD_BOT_TOKEN
-    # Optional: If you're using a specific debug namespace
-    DEBUG=bot:*
+    # Discord Bot Token & OAuth2 Credentials
+    DISCORD_TOKEN=YOUR_BOT_TOKEN_HERE # Get this from your Discord Developer Portal -> Bot -> Token
+    DISCORD_CLIENT_ID=YOUR_CLIENT_ID_HERE # Get this from your Discord Developer Portal -> OAuth2 -> General
+    DISCORD_CLIENT_SECRET=YOUR_CLIENT_SECRET_HERE # Get this from your Discord Developer Portal -> OAuth2 -> General
+    DISCORD_CALLBACK_URL=YOUR_REDIRECT_URL # This is usually for OAuth2 flows (e.g., website login). Set this in Discord Developer Portal -> OAuth2 -> Redirects. If not using a website, a placeholder like http://localhost/callback might be sufficient, but ensure it's allowed in Discord's settings.
+    SESSION_SECRET=A_VERY_LONG_RANDOM_STRING_HERE # A strong, random string for session encryption. Generate one using a tool or method like 'openssl rand -base64 32'.
+
+    REGISTER_COMMANDS=true # Set to 'true' to register slash commands on bot startup.
+
+    # Guild ID (for development/testing specific guilds, or if commands are guild-scoped)
+    GUILD_ID=YOUR_GUILD_ID # Replace with the ID of your Discord Guild (Server).
+
+    # MySQL Database Configuration
+    DB_HOST=127.0.0.1
+    DB_USER=user
+    DB_PASSWORD=password
+    DB_NAME=databasename
     ```
-    Replace `YOUR_DISCORD_BOT_TOKEN` with your actual bot token from the Discord Developer Portal.
+
+    **Where to get Discord credentials:**
+    * Go to the [Discord Developer Portal](https://discord.com/developers/applications).
+    * Select your application (or create a new one).
+    * **`DISCORD_TOKEN`**: Under the "Bot" section, click "Reset Token" (if needed) and copy the token. **Keep this secret!**
+    * **`DISCORD_CLIENT_ID`**: Under the "OAuth2" -> "General" section, copy the "Client ID".
+    * **`DISCORD_CLIENT_SECRET`**: Under the "OAuth2" -> "General" section, click "Reset Secret" (if needed) and copy the "Client Secret". **Keep this secret!**
+    * **`DISCORD_CALLBACK_URL`**: If your bot uses an OAuth2 flow (e.g., for a web dashboard or linking accounts), you'll need to set up "Redirects" under "OAuth2" -> "General" in the Developer Portal. The URL you add there should match this variable. If your bot is purely command-based and doesn't use web logins, this might not be strictly necessary for basic bot functionality, but it's good practice to include a placeholder or remove if confirmed unused.
+
+    **`SESSION_SECRET`**:
+    This is a cryptographic key used to sign session cookies, often used in web applications or OAuth2 flows to ensure sessions are secure and untampered. It should be a long, random, and complex string.
+    **How to generate a `SESSION_SECRET`**:
+    You can generate a suitable string using various methods:
+    * **Online Tool:** Search for "random string generator" or "generate UUID".
+    * **Command Line (Linux/macOS):** `openssl rand -base64 32` (generates a 32-byte base64 encoded string, which is quite secure).
+    * **Node.js Console:** `require('crypto').randomBytes(32).toString('hex')`
 
 5.  **Run the bot:**
     ```bash
