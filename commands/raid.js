@@ -71,7 +71,7 @@ module.exports = {
                         .setRequired(true))
         )
 
-
+	.setDefaultMemberPermissions(0),
     async autocomplete(interaction) {
         try {
             const focusedOption = interaction.options.getFocused(true);
@@ -122,23 +122,15 @@ module.exports = {
 			const eventManagerRole = interaction.guild.roles.cache.get('1378416991500636181');
 			const modRole = interaction.guild.roles.cache.get(config.modRole);
 
-			// Check if user has either:
-			// 1. Event Manager role or higher
-			// 2. Mod role or higher
-			// 3. Administrator permission
 			const hasPermission = (
-				(eventManagerRole && member.roles.cache.has(eventManagerRole.id)) ||
-				(modRole && member.roles.highest.position >= modRole.position) ||
-				member.permissions.has(PermissionFlagsBits.Administrator)
+				(eventManagerRole && member.roles.cache.has(eventManagerRole.id)) || // Checks if they have the specific Event Manager role
+				(modRole && member.roles.highest.position >= modRole.position) ||     // Checks if their highest role is >= mod role
+				member.permissions.has(PermissionFlagsBits.Administrator)             // Checks if they are an administrator
 			);
 
 			if (!hasPermission) {
-				return interaction.editReply({ 
-					content: '⛔ You must be an Event Manager or have higher permissions to use this.', 
-					ephemeral: true 
-				});
+				return interaction.editReply({ content: '⛔ You lack permission to use this command.', ephemeral: true });
 			}
-
             // --- Subcommand Handling ---
             if (sub === 'setup') {
                 const presetName = interaction.options.getString('preset');
