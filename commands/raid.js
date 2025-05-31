@@ -1,7 +1,7 @@
 const { SlashCommandBuilder, EmbedBuilder, PermissionFlagsBits, ActionRowBuilder, ButtonBuilder, ButtonStyle } = require('discord.js');
 const { GuildConfig, RaidSetup, RaidPreset } = require('../models');
 
-const RAID_ROLE_ID = '1378416991500636181'; // Your raid manager role ID
+const RAID_ROLE_ID = '1378416991500636181'; // Your raid manager role ID (previously Event Manager)
 const RAID_NOTIFICATION_ROLE_ID = '1370905658311970836';
 const debug = require('debug')('bot:raid');
 debug.enabled = true;
@@ -95,8 +95,8 @@ module.exports = {
             .addStringOption(opt => opt
                 .setName('id')
                 .setDescription('Message ID of the raid to cancel')
-                .setRequired(true)))
-        .setDefaultMemberPermissions(0), // Set to 0 to handle permissions in code
+                .setRequired(true))),
+        // .setDefaultMemberPermissions(PermissionFlagsBits.SendMessages), // Set to 0 to handle permissions in code
 
     async autocomplete(interaction) {
         try {
@@ -132,28 +132,40 @@ module.exports = {
             });
 
             if (!member) {
-                return interaction.editReply({ 
-                    content: '❌ Could not retrieve your Discord member data. Please try again.', 
-                    ephemeral: true 
+                return interaction.editReply({ // Use editReply as deferReply was called
+                    content: '❌ Could not retrieve your Discord member data. Please try again.',
+                    ephemeral: true
                 });
             }
 
-			// Get Mod role object
-			const raidRole = guild.roles.cache.get(RAID_ROLE_ID);
-			if (!modRole) {
-			  return interaction.reply({
-				content: '⚠️ Mod role not found in the server. Please check configuration.',
-				ephemeral: true
-			  });
-			}
+            const guild = interaction.guild;
+            const raidRole = guild.roles.cache.get(RAID_ROLE_ID);
 
-			// Check if user's highest role is >= modRole
-			if (member.roles.highest.position < raidRole.position) {
-			  return interaction.reply({
-				content: '⛔ You must have the Mod role or higher to use this command.',
-				ephemeral: true
-			  });
-			}
+            // --- Consolidated Permission Check ---
+            // Check if the user has Administrator permission OR
+            // if the RAID_ROLE_ID role exists AND the user's highest role position is >= the RAID_ROLE_ID's position
+            const hasPermission = (
+                member.permissions.has(PermissionFlagsBits.Administrator) ||
+                (raidRole && member.roles.highest.position >= raidRole.position)
+            );
+
+            if (!hasPermission) {
+                return interaction.editReply({ // Use editReply as deferReply was called
+                    content: '⛔ You must have the Raid Manager role or Administrator permission to use this command.',
+                    ephemeral: true
+                });
+            }
+
+            // If raidRole isn't found but user is not admin, still block with a warning.
+            // This is redundant if hasPermission check already passed, but good for clarity on config issues.
+            if (!raidRole) {
+                return interaction.editReply({
+                    content: '⚠️ Raid manager role not found in the server. Please ensure the bot is configured correctly.',
+                    ephemeral: true
+                });
+            }
+            // --- End Permission Check ---
+
 
             const config = await GuildConfig.findOne({ where: { guildId } }).catch(err => {
                 console.error(`Error fetching GuildConfig for guild ${guildId}:`, err);
@@ -161,9 +173,9 @@ module.exports = {
             });
 
             if (!config) {
-                return interaction.editReply({ 
-                    content: '❌ Guild configuration not found. Please ask an admin to set it up.', 
-                    ephemeral: true 
+                return interaction.editReply({
+                    content: '❌ Guild configuration not found. Please ask an admin to set it up.',
+                    ephemeral: true
                 });
             }
 
@@ -185,9 +197,9 @@ module.exports = {
                     await this.handleCancel(interaction, guildId, userId, member);
                     break;
                 default:
-                    await interaction.editReply({ 
+                    await interaction.editReply({
                         content: `❌ Unknown subcommand: ${sub}`,
-                        ephemeral: true 
+                        ephemeral: true
                     });
             }
 
@@ -200,14 +212,14 @@ module.exports = {
     // Subcommand handlers (remain exactly the same as before)
     async handleSetup(interaction, guildId, userId) {
         const presetName = interaction.options.getString('preset');
-        const preset = await RaidPreset.findOne({ 
-            where: { guild_id: guildId, name: presetName } 
+        const preset = await RaidPreset.findOne({
+            where: { guild_id: guildId, name: presetName }
         });
 
         if (!preset) {
-            return interaction.editReply({ 
+            return interaction.editReply({
                 content: `❌ Preset "${presetName}" not found. Use \`/raid preset_create\` first.`,
-                ephemeral: true 
+                ephemeral: true
             });
         }
 
@@ -303,22 +315,22 @@ module.exports = {
 
         const existing = await RaidPreset.findOne({ where: { guild_id: guildId, name } });
         if (existing) {
-            return interaction.editReply({ 
+            return interaction.editReply({
                 content: `❌ Preset "${name}" already exists.`,
-                ephemeral: true 
+                ephemeral: true
             });
         }
 
         await RaidPreset.create({ guild_id: guildId, name, slots });
-        await interaction.editReply({ 
+        await interaction.editReply({
             content: `✅ Preset "${name}" created successfully!`,
-            ephemeral: true 
+            ephemeral: true
         });
     },
 
     async handlePresetList(interaction, guildId) {
         const presets = await RaidPreset.findAll({ where: { guild_id: guildId } });
-        
+
         if (!presets.length) {
             return interaction.editReply({ content: 'No raid presets found.' });
         }
@@ -340,7 +352,7 @@ module.exports = {
     async handlePresetDelete(interaction, guildId) {
         const name = interaction.options.getString('name');
         const preset = await RaidPreset.findOne({ where: { guild_id: guildId, name } });
-        
+
         if (!preset) {
             return interaction.editReply({ content: `❌ Preset "${name}" not found.` });
         }
@@ -352,20 +364,20 @@ module.exports = {
     async handleCancel(interaction, guildId, userId, member) {
         const messageId = interaction.options.getString('id');
         const raid = await RaidSetup.findOne({ where: { guild_id: guildId, message_id: messageId } });
-        
+
         if (!raid) {
             return interaction.editReply({ content: `❌ Raid with ID "${messageId}" not found.` });
         }
 
         if (raid.created_by !== userId && !member.permissions.has(PermissionFlagsBits.Administrator)) {
-            return interaction.editReply({ 
+            return interaction.editReply({
                 content: '⛔ You can only cancel raids you created (unless you\'re an admin).',
-                ephemeral: true 
+                ephemeral: true
             });
         }
 
         await raid.destroy();
-        
+
         try {
             const message = await interaction.channel.messages.fetch(messageId);
             if (message) await message.delete();
@@ -373,7 +385,7 @@ module.exports = {
             console.warn(`Couldn't delete message ${messageId}:`, err.message);
         }
 
-        await interaction.editReply({ 
+        await interaction.editReply({
             content: `✅ Raid CTA (ID: ${messageId}) cancelled and removed.`
         });
     },
@@ -406,14 +418,14 @@ module.exports = {
     async handleError(interaction, error) {
         try {
             if (!interaction.replied && !interaction.deferred) {
-                await interaction.reply({ 
-                    content: '❌ An error occurred. Please try again.', 
-                    ephemeral: true 
+                await interaction.reply({
+                    content: '❌ An error occurred. Please try again.',
+                    ephemeral: true
                 });
             } else {
-                await interaction.editReply({ 
-                    content: '❌ An error occurred. Please try again.', 
-                    ephemeral: true 
+                await interaction.editReply({
+                    content: '❌ An error occurred. Please try again.',
+                    ephemeral: true
                 });
             }
         } catch (err) {
