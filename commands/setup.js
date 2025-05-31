@@ -80,7 +80,7 @@ module.exports = {
           allowedRole: allowedRole?.id || null,
           purgeUsersOnLeave,
           editNick,
-          guildTagVisibility,
+          showGuildTag: guildTagVisibility,
         });
 
         const embed = new EmbedBuilder()

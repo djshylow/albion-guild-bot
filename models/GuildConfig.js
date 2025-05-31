@@ -30,6 +30,12 @@ GuildConfig.init(
       type: DataTypes.BOOLEAN,
       allowNull: false,
     },
+	showGuildTag: {
+	  type: DataTypes.BOOLEAN,
+	  allowNull: false,
+	  defaultValue: true,
+	  field: 'show_guild_tag'
+	}
   },
   {
     sequelize,
@@ -37,6 +43,7 @@ GuildConfig.init(
     tableName: 'guild_configs',
     timestamps: true,
   }
+
 );
 
 module.exports = GuildConfig;

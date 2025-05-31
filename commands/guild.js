@@ -1,4 +1,4 @@
-const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
+const { SlashCommandBuilder, EmbedBuilder, PermissionFlagsBits} = require('discord.js');
 const { AlbionGuild } = require('../models');
 const { GuildConfig } = require('../models');
 const AlbionAPI = require('../utils/api'); // Correct path to api.js
@@ -8,7 +8,8 @@ const MAX_TAG_LENGTH = 5; // Set your desired max length here
 module.exports = {
   data: new SlashCommandBuilder()
     .setName('guild')
-    .setDescription('Manage Albion Online guilds')
+    .setDescription('Admin-only Manage Albion Online guilds')
+	.setDefaultMemberPermissions(PermissionFlagsBits.Administrator)
     .addSubcommand(subcommand =>
       subcommand
         .setName('add')

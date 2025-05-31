@@ -32,7 +32,15 @@ class AlbionAPI {
             throw error;
         }
     }
-
+	static async getGuildMembers(guildId) {
+		try {
+			const response = await axios.get(`${ALBION_API_BASE}/guilds/${guildId}/members`);
+			return response.data;
+		} catch (error) {
+			console.error('Guild members error:', error.response?.data || error.message);
+			throw new Error('Failed to fetch guild members');
+		}
+	}
     static async getGuildInfo(guildId) {
         try {
             const response = await axios.get(`${ALBION_API_BASE}/guilds/${guildId}`);
