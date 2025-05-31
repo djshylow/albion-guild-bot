@@ -52,17 +52,28 @@ async function updateRaidEmbed(raidSetup, interaction) {
 
         const slotsData = typeof preset.slots === 'string' ? JSON.parse(preset.slots) : preset.slots;
         
-        // Ensure participants is properly parsed
-        let participants = raidSetup.participants;
-        if (typeof participants === 'string') {
-            try {
-                participants = JSON.parse(participants);
-            } catch (e) {
+        // --- START: Robust parsing for participants in updateRaidEmbed ---
+        let participants;
+        try {
+            let tempParticipants = raidSetup.participants;
+            if (typeof tempParticipants === 'string') {
+                tempParticipants = JSON.parse(tempParticipants);
+            }
+            if (typeof tempParticipants === 'string') {
+                participants = JSON.parse(tempParticipants);
+            } else {
+                participants = tempParticipants;
+            }
+            if (typeof participants !== 'object' || participants === null) {
                 participants = {};
             }
+        } catch (e) {
+            debug('Error during robust parsing of participants in updateRaidEmbed:', e);
+            participants = {};
         }
+        // --- END: Robust parsing for participants in updateRaidEmbed ---
         
-        // Validate the structure
+        // Validate the structure (this function is good)
         participants = validateParticipants(participants, slotsData);
 
         for (const [role, maxSlots] of Object.entries(slotsData)) {
@@ -81,10 +92,11 @@ async function updateRaidEmbed(raidSetup, interaction) {
 
         return embed;
     } catch (error) {
-        debug('Error updating embed:', error);
+        debug('Error caught in updateRaidEmbed, returning null:', error); // Added more specific debug
         return null;
     }
 }
+
 module.exports = async (interaction) => {
     const { customId, user, message } = interaction;
     // No deferUpdate here, it should be handled by interactionCreate.js
@@ -148,7 +160,7 @@ module.exports = async (interaction) => {
 async function handleSignup(interaction, raidSetup, transaction) {
     const role = interaction.customId.substring('raid_signup_'.length);
     const userId = interaction.user.id;
-    
+
     // Get preset data
     const preset = await RaidPreset.findOne({
         where: { guild_id: raidSetup.guild_id, name: raidSetup.preset },
@@ -164,10 +176,41 @@ async function handleSignup(interaction, raidSetup, transaction) {
     }
 
     const slotsData = typeof preset.slots === 'string' ? JSON.parse(preset.slots) : preset.slots;
-    raidSetup.participants = validateParticipants(raidSetup.participants, slotsData);
 
+    // --- START: Robust parsing for participants in handleSignup ---
+    let participants;
+    try {
+        let tempParticipants = raidSetup.participants;
+        // Attempt to parse once
+        if (typeof tempParticipants === 'string') {
+            tempParticipants = JSON.parse(tempParticipants);
+        }
+
+        // If after the first parse, it's still a string, parse again
+        if (typeof tempParticipants === 'string') {
+            participants = JSON.parse(tempParticipants);
+        } else {
+            // Otherwise, it's already an object or null/undefined, use it directly
+            participants = tempParticipants;
+        }
+
+        // Ensure participants is an object if it ended up null/undefined
+        if (typeof participants !== 'object' || participants === null) {
+            participants = {};
+        }
+
+    } catch (e) {
+        debug('Error during robust parsing of participants:', e);
+        participants = {}; // Fallback if anything goes wrong during parsing
+    }
+    // --- END: Robust parsing for participants in handleSignup ---
+    
+    // Now 'participants' should definitively be a JavaScript object or an empty object
+    participants = validateParticipants(participants, slotsData);
+
+    // Find if user is already signed up for any role
     let currentRole = null;
-    for (const [r, users] of Object.entries(raidSetup.participants)) {
+    for (const [r, users] of Object.entries(participants)) { // Use the 'participants' local variable
         if (users.includes(userId)) {
             currentRole = r;
             break;
@@ -183,8 +226,8 @@ async function handleSignup(interaction, raidSetup, transaction) {
     }
 
     if (currentRole) {
-        raidSetup.participants[currentRole] = raidSetup.participants[currentRole].filter(id => id !== userId);
-        raidSetup.changed('participants', true); // Mark as changed after filtering
+        // Remove user from their current role
+        participants[currentRole] = participants[currentRole].filter(id => id !== userId); // Use 'participants' local variable
         debug(`User ${interaction.user.username} removed from ${currentRole} to switch roles.`);
     }
 
@@ -197,44 +240,58 @@ async function handleSignup(interaction, raidSetup, transaction) {
         return;
     }
 
-    if (!raidSetup.participants[role]) {
-        raidSetup.participants[role] = [];
+    if (!participants[role]) { // Use 'participants' local variable
+        participants[role] = [];
     }
 
-    if (raidSetup.participants[role].length >= maxSlots) {
+    if (participants[role].length >= maxSlots) { // Use 'participants' local variable
         await interaction.followUp({
             content: `⛔ ${role} slots are full`,
             ephemeral: true
         });
         if (currentRole) {
-            raidSetup.participants[currentRole].push(userId);
-            raidSetup.changed('participants', true); // Mark as changed if pushed back
-            await raidSetup.save({ transaction });
-            await interaction.followUp({
-                content: `Returning you to your previous role: ${currentRole}`,
-                ephemeral: true
-            });
+            // If slots are full, put them back in their original role
+            participants[currentRole].push(userId); // Use 'participants' local variable
+            debug(`Returning user ${interaction.user.username} to previous role ${currentRole} due to full slots.`);
         }
+        // Save the participants state BEFORE returning, as we might have put the user back
+        raidSetup.participants = JSON.stringify(participants); // Update raidSetup instance before saving
+        raidSetup.changed('participants', true);
+        await raidSetup.save({ transaction });
         return;
     }
 
-    raidSetup.participants[role].push(userId); // User is added here
-    raidSetup.changed('participants', true); // <--- ADDED THIS LINE HERE for signup
-    await raidSetup.save({ transaction });
-    
-    // IMPORTANT: Reload the instance to ensure it has the very latest data committed
-    await raidSetup.reload({ transaction }); // <-- This should update the object in memory
+    // Add user to the new role
+    participants[role].push(userId); // Use 'participants' local variable
 
-    // ADD THIS DEBUG LINE
+    // Save the modified participants back to the database
+    raidSetup.participants = JSON.stringify(participants); // Convert back to JSON string
+    raidSetup.changed('participants', true);
+    await raidSetup.save({ transaction });
+
+    // IMPORTANT: Reload the instance to ensure it has the very latest data committed
+    // This reload is still useful if you have multiple instances of your bot running or if there's
+    // any delay in database write propagation, ensuring local object is synced.
+    await raidSetup.reload({ transaction });
+
     debug(`handleSignup: raidSetup.participants AFTER reload and BEFORE embed update: ${JSON.stringify(raidSetup.participants)}`);
 
-	// Update message
+    // Update message
     const embed = await updateRaidEmbed(raidSetup, interaction); // Pass the reloaded raidSetup
-    // NEW DEBUG LINE HERE:
-    debug(`handleSignup: Final embed fields before edit: ${JSON.stringify(embed.data.fields)}`); // Add this line
+    
+    // Check if embed is null before trying to access its properties
     if (embed) {
+        debug(`handleSignup: Final embed fields before edit: ${JSON.stringify(embed.data.fields)}`);
+        // Ensure you're only editing the embed, not the components unless they've changed
         await interaction.message.edit({ embeds: [embed], components: interaction.message.components }).catch(e => {
             debug('Error updating message with embed:', e);
+        });
+    } else {
+        debug('handleSignup: Embed was null, cannot update message.');
+        // Optionally, send a user-facing error if the embed couldn't be generated
+        await interaction.followUp({
+            content: '❌ An error occurred while updating the raid display. Please try again or notify an admin.',
+            ephemeral: true
         });
     }
 
@@ -256,15 +313,26 @@ async function handleCancelSignup(interaction, raidSetup, transaction) {
         transaction
     });
 
-    // Parse participants if it's a string
-    let participants = raidSetup.participants;
-    if (typeof participants === 'string') {
-        try {
-            participants = JSON.parse(participants);
-        } catch (e) {
+    // --- START: Robust parsing for participants in handleCancelSignup ---
+    let participants;
+    try {
+        let tempParticipants = raidSetup.participants;
+        if (typeof tempParticipants === 'string') {
+            tempParticipants = JSON.parse(tempParticipants);
+        }
+        if (typeof tempParticipants === 'string') {
+            participants = JSON.parse(tempParticipants);
+        } else {
+            participants = tempParticipants;
+        }
+        if (typeof participants !== 'object' || participants === null) {
             participants = {};
         }
+    } catch (e) {
+        debug('Error during robust parsing of participants in handleCancelSignup:', e);
+        participants = {};
     }
+    // --- END: Robust parsing for participants in handleCancelSignup ---
 
     if (preset) {
         const slotsData = typeof preset.slots === 'string' ? JSON.parse(preset.slots) : preset.slots;
@@ -290,17 +358,23 @@ async function handleCancelSignup(interaction, raidSetup, transaction) {
 
     if (removed) {
         // Update the raidSetup with the modified participants
-        raidSetup.participants = participants;
+        raidSetup.participants = JSON.stringify(participants); // Stringify before saving
         raidSetup.changed('participants', true);
         
         await raidSetup.save({ transaction });
-        await raidSetup.reload({ transaction }); 
+        await raidSetup.reload({ transaction }); 
         
         // Update message
         const embed = await updateRaidEmbed(raidSetup, interaction);
         if (embed) {
             await interaction.message.edit({ embeds: [embed], components: interaction.message.components }).catch(e => {
                 debug('Error updating message with embed:', e);
+            });
+        } else {
+            debug('handleCancelSignup: Embed was null, cannot update message.');
+            await interaction.followUp({
+                content: '❌ An error occurred while updating the raid display after cancelling signup. Please try again or notify an admin.',
+                ephemeral: true
             });
         }
 
