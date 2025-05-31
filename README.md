@@ -1,6 +1,6 @@
 # Albion Guild Bot
 
-[![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![License](https://img.shields.io/badge/License-Unlicense-blue.svg)](LICENSE)
 [![GitHub last commit](https://img.shields.io/github/last-commit/djshylow/albion-guild-bot)](https://github.com/djshylow/albion-guild-bot/commits/main)
 
 ## ❤️ Support This Project
@@ -30,8 +30,8 @@ The Albion Guild Bot is a comprehensive Discord bot designed to streamline guild
     * **Live Embed Updates:** Raid embeds dynamically update to show current participants for each role.
 
 * **Guild Management:**
-    * **Register Users:** Manually register users using `/admin register`.
-    * **Unregister Users:** Manually unregister users using `/admin unregister`.
+    * **Register Users:** Manually register a user using `/admin register`.
+    * **Unregister Users:** Manually unregister a user using `/admin unregister`.
     * **Add Guilds:** Add an Albion Online guild to the database using `/guild add`.
     * **View Members:** View members of a registered Albion Online guild using `/guildmembers`.
     * **Register Character:** Users can register their own Albion Online character using `/register`.
@@ -181,7 +181,7 @@ Contributions are welcome! If you find a bug or have a feature request, please o
 
 ## 📄 License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is released under the **Unlicense**. This means it is free and unencumbered software released into the public domain. You are free to copy, modify, publish, use, compile, sell, or distribute this software for any purpose, commercial or non-commercial, and by any means. For more information, please refer to <https://unlicense.org>.
 
 ## 📧 Contact
 
