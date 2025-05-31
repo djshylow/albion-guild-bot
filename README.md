@@ -1,4 +1,3 @@
-# albion-guild-bot
 # Albion Guild Bot
 
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
@@ -120,13 +119,19 @@ Beyond the `.env` file, the bot's behavior can be customized via Discord command
 
 Contributions are welcome! If you find a bug or have a feature request, please open an issue. If you'd like to contribute code, please fork the repository and submit a pull request.
 
+## ❤️ Support
+
+If you find this bot helpful and would like to support its development, you can buy me a coffee!
+
+* [**Ko-fi: djshylow**](https://ko-fi.com/djshylow)
+
 ## 📄 License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ## 📧 Contact
 
-For any questions or inquiries, please open an issue on the GitHub repository or contact the maintainer:
+For any questions or inquiries, please open an issue on the GitHub repository.
 
 * **GitHub:** [djshylow](https://github.com/djshylow)
 
