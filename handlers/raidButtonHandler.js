@@ -76,19 +76,29 @@ async function updateRaidEmbed(raidSetup, interaction) {
         // Validate the structure (this function is good)
         participants = validateParticipants(participants, slotsData);
 
-        for (const [role, maxSlots] of Object.entries(slotsData)) {
-            const signedUp = participants[role] || [];
-            
-            const value = signedUp.length > 0
-                ? signedUp.map(id => `<@${id}>`).join(', ')
-                : 'No signups yet';
-            
-            embed.addFields({
-                name: `${role} (${signedUp.length}/${maxSlots})`,
-                value: value,
-                inline: true
-            });
-        }
+		const roleFields = [];
+
+		for (const [role, maxSlots] of Object.entries(slotsData)) {
+			const signedUp = participants[role] || [];
+
+			const value = signedUp.length > 0
+				? signedUp.map(id => `<@${id}>`).join(', ')
+				: 'No signups yet';
+
+			roleFields.push({
+				name: `${role} (${signedUp.length}/${maxSlots})`,
+				value: value,
+				inline: true
+			});
+		}
+
+		// Pad to multiple of 3 for clean row layout
+		while (roleFields.length % 3 !== 0) {
+			roleFields.push({ name: '\u200B', value: '\u200B', inline: true });
+		}
+
+		embed.addFields(roleFields);
+
 
         return embed;
     } catch (error) {

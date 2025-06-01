@@ -122,8 +122,13 @@ module.exports = {
             const sub = interaction.options.getSubcommand();
             const guildId = interaction.guild.id;
             const userId = interaction.user.id;
-            // Defer reply immediately
-            await interaction.deferReply({ ephemeral: false });
+			
+			if (sub === 'preset_list') {
+				await interaction.deferReply({ ephemeral: true });
+			} else {
+				await interaction.deferReply({ ephemeral: false });
+			}
+
 
             // Fetch member with error handling
             const member = await interaction.guild.members.fetch(userId).catch(err => {
@@ -237,16 +242,27 @@ module.exports = {
             );
 
         // Add slot fields
-        const slotsData = typeof preset.slots === 'string' ? JSON.parse(preset.slots) : preset.slots;
-        if (slotsData && typeof slotsData === 'object') {
-            for (const [role, count] of Object.entries(slotsData)) {
-                embed.addFields({
-                    name: `${role} (Slots: ${count})`,
-                    value: 'No signups yet',
-                    inline: true
-                });
-            }
-        }
+		const slotsData = typeof preset.slots === 'string' ? JSON.parse(preset.slots) : preset.slots;
+
+		if (slotsData && typeof slotsData === 'object') {
+			const slotFields = [];
+
+			for (const [role, count] of Object.entries(slotsData)) {
+				slotFields.push({
+					name: `${role} (Slots: ${count})`,
+					value: 'No signups yet',
+					inline: true
+				});
+			}
+
+			// Pad to multiple of 3 for clean row layout
+			while (slotFields.length % 3 !== 0) {
+				slotFields.push({ name: '\u200B', value: '\u200B', inline: true });
+			}
+
+			embed.addFields(slotFields);
+		}
+
 
         // Create action rows with buttons
         const buttonsRow1 = new ActionRowBuilder().addComponents(
@@ -328,26 +344,35 @@ module.exports = {
         });
     },
 
-    async handlePresetList(interaction, guildId) {
-        const presets = await RaidPreset.findAll({ where: { guild_id: guildId } });
+	async handlePresetList(interaction, guildId) {
+		const presets = await RaidPreset.findAll({ where: { guild_id: guildId } });
 
-        if (!presets.length) {
-            return interaction.editReply({ content: 'No raid presets found.' });
-        }
+		if (!presets.length) {
+			return interaction.editReply({ content: 'No raid presets found.' });
+		}
 
-        const presetList = presets.map(p => {
-            const slots = typeof p.slots === 'string' ? JSON.parse(p.slots) : p.slots;
-            const details = Object.entries(slots).map(([role, count]) => `${role}: ${count}`).join(', ');
-            return `**${p.name}**: ${details}`;
-        }).join('\n');
+		const embed = new EmbedBuilder()
+			.setTitle('Available Raid Presets')
+			.setColor('Green');
 
-        await interaction.editReply({
-            embeds: [new EmbedBuilder()
-                .setTitle('Available Raid Presets')
-                .setDescription(presetList)
-                .setColor('Green')]
-        });
-    },
+		for (const preset of presets) {
+			const slots = typeof preset.slots === 'string' ? JSON.parse(preset.slots) : preset.slots;
+
+			const formattedLine = Object.entries(slots)
+				.map(([role, count]) => `${role.split(' ')[0]}: ${count}`) // Show short role names
+				.join(', ');
+
+			embed.addFields({
+				name: preset.name,
+				value: formattedLine || 'No slot data',
+				inline: false
+			});
+		}
+
+		await interaction.editReply({ embeds: [embed] });
+	},
+
+
 
     async handlePresetDelete(interaction, guildId) {
         const name = interaction.options.getString('name');
