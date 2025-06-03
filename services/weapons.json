@@ -1,0 +1,538 @@
+[
+  {
+    "name": "Broadsword",
+    "value": "Broadsword"
+  },
+  {
+    "name": "Claymore",
+    "value": "Claymore"
+  },
+  {
+    "name": "Dual Swords",
+    "value": "Dual Swords"
+  },
+  {
+    "name": "Clarent Blade",
+    "value": "Clarent Blade"
+  },
+  {
+    "name": "Carving Sword",
+    "value": "Carving Sword"
+  },
+  {
+    "name": "Galatine Pair",
+    "value": "Galatine Pair"
+  },
+  {
+    "name": "Kingmaker",
+    "value": "Kingmaker"
+  },
+  {
+    "name": "Infinity Blade",
+    "value": "Infinity Blade"
+  },
+  {
+    "name": "Battleaxe",
+    "value": "Battleaxe"
+  },
+  {
+    "name": "Greataxe",
+    "value": "Greataxe"
+  },
+  {
+    "name": "Halberd",
+    "value": "Halberd"
+  },
+  {
+    "name": "Carrioncaller",
+    "value": "Carrioncaller"
+  },
+  {
+    "name": "Infernal Scythe",
+    "value": "Infernal Scythe"
+  },
+  {
+    "name": "Bear Paws",
+    "value": "Bear Paws"
+  },
+  {
+    "name": "Realmbreaker",
+    "value": "Realmbreaker"
+  },
+  {
+    "name": "Crystal Reaper",
+    "value": "Crystal Reaper"
+  },
+  {
+    "name": "Mace",
+    "value": "Mace"
+  },
+  {
+    "name": "Heavy Mace",
+    "value": "Heavy Mace"
+  },
+  {
+    "name": "Morning Star",
+    "value": "Morning Star"
+  },
+  {
+    "name": "Bedrock Mace",
+    "value": "Bedrock Mace"
+  },
+  {
+    "name": "Incubus Mace",
+    "value": "Incubus Mace"
+  },
+  {
+    "name": "Camlann Mace",
+    "value": "Camlann Mace"
+  },
+  {
+    "name": "Oathkeepers",
+    "value": "Oathkeepers"
+  },
+  {
+    "name": "Dreadstorm Monarch",
+    "value": "Dreadstorm Monarch"
+  },
+  {
+    "name": "Hammer",
+    "value": "Hammer"
+  },
+  {
+    "name": "Polehammer",
+    "value": "Polehammer"
+  },
+  {
+    "name": "Great Hammer",
+    "value": "Great Hammer"
+  },
+  {
+    "name": "Tombhammer",
+    "value": "Tombhammer"
+  },
+  {
+    "name": "Forge Hammers",
+    "value": "Forge Hammers"
+  },
+  {
+    "name": "Grovekeeper",
+    "value": "Grovekeeper"
+  },
+  {
+    "name": "Hand of Justice",
+    "value": "Hand of Justice"
+  },
+  {
+    "name": "Brawler Gloves",
+    "value": "Brawler Gloves"
+  },
+  {
+    "name": "Battle Bracers",
+    "value": "Battle Bracers"
+  },
+  {
+    "name": "Spiked Gauntlets",
+    "value": "Spiked Gauntlets"
+  },
+  {
+    "name": "Ursine Maulers",
+    "value": "Ursine Maulers"
+  },
+  {
+    "name": "Hellfire Hands",
+    "value": "Hellfire Hands"
+  },
+  {
+    "name": "Ravenstrike Cestus",
+    "value": "Ravenstrike Cestus"
+  },
+  {
+    "name": "Fists of Avalon",
+    "value": "Fists of Avalon"
+  },
+  {
+    "name": "Forcepulse Bracers",
+    "value": "Forcepulse Bracers"
+  },
+  {
+    "name": "Crossbow",
+    "value": "Crossbow"
+  },
+  {
+    "name": "Heavy Crossbow",
+    "value": "Heavy Crossbow"
+  },
+  {
+    "name": "Light Crossbow",
+    "value": "Light Crossbow"
+  },
+  {
+    "name": "Weeping Repeater",
+    "value": "Weeping Repeater"
+  },
+  {
+    "name": "Boltcasters",
+    "value": "Boltcasters"
+  },
+  {
+    "name": "Siegebow",
+    "value": "Siegebow"
+  },
+  {
+    "name": "Energy Shaper",
+    "value": "Energy Shaper"
+  },
+  {
+    "name": "Arclight Blasters",
+    "value": "Arclight Blasters"
+  },
+  {
+    "name": "Bow",
+    "value": "Bow"
+  },
+  {
+    "name": "Warbow",
+    "value": "Warbow"
+  },
+  {
+    "name": "Longbow",
+    "value": "Longbow"
+  },
+  {
+    "name": "Whispering Bow",
+    "value": "Whispering Bow"
+  },
+  {
+    "name": "Wailing Bow",
+    "value": "Wailing Bow"
+  },
+  {
+    "name": "Bow of Badon",
+    "value": "Bow of Badon"
+  },
+  {
+    "name": "Mistpiercer",
+    "value": "Mistpiercer"
+  },
+  {
+    "name": "Skystrider Bow",
+    "value": "Skystrider Bow"
+  },
+  {
+    "name": "Dagger",
+    "value": "Dagger"
+  },
+  {
+    "name": "Dagger Pair",
+    "value": "Dagger Pair"
+  },
+  {
+    "name": "Claws",
+    "value": "Claws"
+  },
+  {
+    "name": "Bloodletter",
+    "value": "Bloodletter"
+  },
+  {
+    "name": "Demonfang",
+    "value": "Demonfang"
+  },
+  {
+    "name": "Deathgivers",
+    "value": "Deathgivers"
+  },
+  {
+    "name": "Bridled Fury",
+    "value": "Bridled Fury"
+  },
+  {
+    "name": "Twin Slayers",
+    "value": "Twin Slayers"
+  },
+  {
+    "name": "Spear",
+    "value": "Spear"
+  },
+  {
+    "name": "Pike",
+    "value": "Pike"
+  },
+  {
+    "name": "Glaive",
+    "value": "Glaive"
+  },
+  {
+    "name": "Heron Spear",
+    "value": "Heron Spear"
+  },
+  {
+    "name": "Spirithunter",
+    "value": "Spirithunter"
+  },
+  {
+    "name": "Trinity Spear",
+    "value": "Trinity Spear"
+  },
+  {
+    "name": "Daybreaker",
+    "value": "Daybreaker"
+  },
+  {
+    "name": "Rift Glaive",
+    "value": "Rift Glaive"
+  },
+  {
+    "name": "Quarterstaff",
+    "value": "Quarterstaff"
+  },
+  {
+    "name": "Iron-clad Staff",
+    "value": "Iron-clad Staff"
+  },
+  {
+    "name": "Double Bladed Staff",
+    "value": "Double Bladed Staff"
+  },
+  {
+    "name": "Black Monk Stave",
+    "value": "Black Monk Stave"
+  },
+  {
+    "name": "Soulscythe",
+    "value": "Soulscythe"
+  },
+  {
+    "name": "Staff of Balance",
+    "value": "Staff of Balance"
+  },
+  {
+    "name": "Grailseeker",
+    "value": "Grailseeker"
+  },
+  {
+    "name": "Phantom Twinblade",
+    "value": "Phantom Twinblade"
+  },
+  {
+    "name": "Prowling Staff",
+    "value": "Prowling Staff"
+  },
+  {
+    "name": "Rootbound Staff",
+    "value": "Rootbound Staff"
+  },
+  {
+    "name": "Primal Staff",
+    "value": "Primal Staff"
+  },
+  {
+    "name": "Bloodmoon Staff",
+    "value": "Bloodmoon Staff"
+  },
+  {
+    "name": "Hellspawn Staff",
+    "value": "Hellspawn Staff"
+  },
+  {
+    "name": "Earthrune Staff",
+    "value": "Earthrune Staff"
+  },
+  {
+    "name": "Lightcaller",
+    "value": "Lightcaller"
+  },
+  {
+    "name": "Nature Staff",
+    "value": "Nature Staff"
+  },
+  {
+    "name": "Great Nature Staff",
+    "value": "Great Nature Staff"
+  },
+  {
+    "name": "Wild Staff",
+    "value": "Wild Staff"
+  },
+  {
+    "name": "Druidic Staff",
+    "value": "Druidic Staff"
+  },
+  {
+    "name": "Blight Staff",
+    "value": "Blight Staff"
+  },
+  {
+    "name": "Rampant Staff",
+    "value": "Rampant Staff"
+  },
+  {
+    "name": "Ironroot Staff",
+    "value": "Ironroot Staff"
+  },
+  {
+    "name": "Forgebark Staff",
+    "value": "Forgebark Staff"
+  },
+  {
+    "name": "Fire Staff",
+    "value": "Fire Staff"
+  },
+  {
+    "name": "Great Fire Staff",
+    "value": "Great Fire Staff"
+  },
+  {
+    "name": "Infernal Staff",
+    "value": "Infernal Staff"
+  },
+  {
+    "name": "Wildfire Staff",
+    "value": "Wildfire Staff"
+  },
+  {
+    "name": "Brimstone Staff",
+    "value": "Brimstone Staff"
+  },
+  {
+    "name": "Blazing Staff",
+    "value": "Blazing Staff"
+  },
+  {
+    "name": "Dawnsong",
+    "value": "Dawnsong"
+  },
+  {
+    "name": "Flamewalker Staff",
+    "value": "Flamewalker Staff"
+  },
+  {
+    "name": "Holy Staff",
+    "value": "Holy Staff"
+  },
+  {
+    "name": "Great Holy Staff",
+    "value": "Great Holy Staff"
+  },
+  {
+    "name": "Divine Staff",
+    "value": "Divine Staff"
+  },
+  {
+    "name": "Lifetouch Staff",
+    "value": "Lifetouch Staff"
+  },
+  {
+    "name": "Fallen Staff",
+    "value": "Fallen Staff"
+  },
+  {
+    "name": "Redemption Staff",
+    "value": "Redemption Staff"
+  },
+  {
+    "name": "Hallowfall",
+    "value": "Hallowfall"
+  },
+  {
+    "name": "Exalted Staff",
+    "value": "Exalted Staff"
+  },
+  {
+    "name": "Arcane Staff",
+    "value": "Arcane Staff"
+  },
+  {
+    "name": "Great Arcane Staff",
+    "value": "Great Arcane Staff"
+  },
+  {
+    "name": "Enigmatic Staff",
+    "value": "Enigmatic Staff"
+  },
+  {
+    "name": "Witchwork Staff",
+    "value": "Witchwork Staff"
+  },
+  {
+    "name": "Occult Staff",
+    "value": "Occult Staff"
+  },
+  {
+    "name": "Malevolent Locus",
+    "value": "Malevolent Locus"
+  },
+  {
+    "name": "Evensong",
+    "value": "Evensong"
+  },
+  {
+    "name": "Astral Staff",
+    "value": "Astral Staff"
+  },
+  {
+    "name": "Frost Staff",
+    "value": "Frost Staff"
+  },
+  {
+    "name": "Great Frost Staff",
+    "value": "Great Frost Staff"
+  },
+  {
+    "name": "Glacial Staff",
+    "value": "Glacial Staff"
+  },
+  {
+    "name": "Hoarfrost Staff",
+    "value": "Hoarfrost Staff"
+  },
+  {
+    "name": "Icicle Staff",
+    "value": "Icicle Staff"
+  },
+  {
+    "name": "Permafrost Prism",
+    "value": "Permafrost Prism"
+  },
+  {
+    "name": "Chillhowl",
+    "value": "Chillhowl"
+  },
+  {
+    "name": "Arctic Staff",
+    "value": "Arctic Staff"
+  },
+  {
+    "name": "Cursed Staff",
+    "value": "Cursed Staff"
+  },
+  {
+    "name": "Great Cursed Staff",
+    "value": "Great Cursed Staff"
+  },
+  {
+    "name": "Demonic Staff",
+    "value": "Demonic Staff"
+  },
+  {
+    "name": "Lifecurse Staff",
+    "value": "Lifecurse Staff"
+  },
+  {
+    "name": "Cursed Skull",
+    "value": "Cursed Skull"
+  },
+  {
+    "name": "Damnation Staff",
+    "value": "Damnation Staff"
+  },
+  {
+    "name": "Shadowcaller",
+    "value": "Shadowcaller"
+  },
+  {
+    "name": "Rotcaller Staff",
+    "value": "Rotcaller Staff"
+  }
+]
