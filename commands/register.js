@@ -36,15 +36,15 @@ module.exports = {
       }
 
       // Check if player is already registered
-      const existing = await Player.findOne({ where: { discordId } });
-      if (existing) {
-        return interaction.editReply({
-          content: `You're already registered as ${existing.albionName}`,
-        });
-      }
+		const guildData = await AlbionGuild.findOne({
+		  where: {
+			guildId: playerInfo.GuildId || '', // Handle null guild IDs
+			discordGuildId: interaction.guild.id
+		  }
+		});
 
       // Fetch the guild record from the database
-      const guildData = playerInfo.GuildId ? await AlbionGuild.findOne({
+      const guildInfo = playerInfo.GuildId ? await AlbionGuild.findOne({
         where: {
           guildId: playerInfo.GuildId,
           discordGuildId: interaction.guild.id
@@ -94,27 +94,52 @@ module.exports = {
       }
 
       // Handle role assignment
-      try {
-        if (config.allowedRole) {
-          const allowedRole = interaction.guild.roles.cache.get(config.allowedRole);
-          if (allowedRole && member.roles.cache.has(allowedRole.id)) {
-            await member.roles.remove(allowedRole);
-          }
-        }
+	// Handle role assignment with debug logging
+		try {
+		  console.log('Starting role assignment process...');
+		  
+		  // Remove allowed role if configured
+		  if (config.allowedRole) {
+			const allowedRole = interaction.guild.roles.cache.get(config.allowedRole);
+			console.log(`Allowed role resolved: ${allowedRole?.id || 'Not found'}`);
+			
+			if (allowedRole && member.roles.cache.has(allowedRole.id)) {
+			  console.log('Removing allowed role...');
+			  await member.roles.remove(allowedRole)
+				.then(() => console.log('Successfully removed allowed role'))
+				.catch(e => console.error('Failed to remove allowed role:', e));
+			}
+		  }
 
-        if (guildData?.guildRole) {
-          const guildRole = interaction.guild.roles.cache.get(guildData.guildRole);
-          if (guildRole && !member.roles.cache.has(guildRole.id)) {
-            await member.roles.add(guildRole);
-            roleAdded = `<@&${guildRole.id}>`;
-          }
-        }
-      } catch (roleError) {
-        console.error('Role management error:', roleError);
-        return interaction.editReply({
-          content: '❌ Failed to update roles. Please check bot permissions and role hierarchy.',
-        });
-      }
+		  // Add guild role if configured
+		  if (guildInfo?.guildRole) {
+			const guildRole = interaction.guild.roles.cache.get(guildInfo.guildRole);
+			console.log(`Guild role resolved: ${guildRole?.id || 'Not found'}`);
+			
+			if (guildRole) {
+			  if (!member.roles.cache.has(guildRole.id)) {
+				console.log('Adding guild role...');
+				await member.roles.add(guildRole)
+				  .then(() => {
+					console.log('Successfully added guild role');
+					roleAdded = `<@&${guildRole.id}>`;
+				  })
+				  .catch(e => {
+					console.error('Failed to add guild role:', e);
+					throw new Error('Failed to assign guild role. Check bot permissions.');
+				  });
+			  } else {
+				console.log('Member already has the guild role');
+				roleAdded = `<@&${guildRole.id}> (already had role)`;
+			  }
+			}
+		  }
+		} catch (roleError) {
+		  console.error('Role management error:', roleError);
+		  return interaction.editReply({
+			content: '❌ Failed to update roles. Please check bot permissions and role hierarchy.',
+		  });
+		}
 
       // Save player to DB
       const totalFame = (playerInfo.KillFame || 0) + (playerInfo.DeathFame || 0);

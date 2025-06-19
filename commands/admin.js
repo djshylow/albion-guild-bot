@@ -82,12 +82,12 @@ module.exports = {
         }
 
         const targetMember = await guild.members.fetch(user.id);
-        const guildData = await AlbionGuild.findOne({
-          where: {
-            guildId: playerInfo.GuildId,
-            discordGuildId: guild.id
-          }
-        });
+		const guildData = await AlbionGuild.findOne({
+		  where: {
+			guildId: playerInfo.GuildId || '', // Handle null guild IDs
+			discordGuildId: interaction.guild.id
+		  }
+		});		
 
 		let newNickname = playerInfo.Name;
 		let roleAdded = 'None';
