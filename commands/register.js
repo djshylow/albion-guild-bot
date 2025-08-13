@@ -19,6 +19,8 @@ module.exports = {
     const discordId = interaction.user.id;
 
     try {
+      console.log(`Starting registration for ${albionName} (Discord ID: ${discordId})`);
+      
       // Get guild config
       const config = await GuildConfig.findOne({ where: { guildId: interaction.guild.id } });
       if (!config) {
@@ -27,137 +29,175 @@ module.exports = {
         });
       }
 
-      // Get player info from Albion API
-      const playerInfo = await AlbionAPI.getPlayerInfo(albionName);
-      if (!playerInfo || playerInfo.Name !== albionName) {
+      // Get player info from Albion API with enhanced search
+      console.log(`Searching players: ${albionName}`);
+      const players = await AlbionAPI.searchPlayers(albionName);
+      
+      // Find exact match (case-insensitive)
+      const playerMatch = players.find(p => p.Name.toLowerCase() === albionName.toLowerCase());
+      
+      if (!playerMatch) {
+        const similarPlayers = players
+          .slice(0, 5)
+          .map(p => `${p.Name}${p.GuildName ? ` [${p.GuildName}]` : ''}`);
+        
         return interaction.editReply({
-          content: `Found a similar name: "${playerInfo?.Name || 'Unknown'}". Please use your exact character name.`,
+          content: similarPlayers.length > 0
+            ? `Found similar names:\n${similarPlayers.join('\n')}\n\nPlease use your exact character name.`
+            : `❌ No player found matching "${albionName}"`
         });
       }
 
-      // Check if player is already registered
-		const guildData = await AlbionGuild.findOne({
-		  where: {
-			guildId: playerInfo.GuildId || '', // Handle null guild IDs
-			discordGuildId: interaction.guild.id
-		  }
-		});
+      // Get full player details
+      const playerInfo = await AlbionAPI.getPlayerById(playerMatch.Id);
+      console.log(`Player info retrieved: ${playerInfo.Name} (${playerInfo.Id})`);
 
-      // Fetch the guild record from the database
-      const guildInfo = playerInfo.GuildId ? await AlbionGuild.findOne({
-        where: {
-          guildId: playerInfo.GuildId,
-          discordGuildId: interaction.guild.id
-        }
-      }) : null;
+      // Enhanced guild verification
+      let guildData = null;
+      let guildNotice = '';
+      let shouldNotifyMods = false;
 
-      // 🔔 Send alert if guild is not registered
-      if (!guildData) {
-        const logChannel = interaction.guild.channels.cache.get('1378000555422646342');
-        const modRoleId = '1378004212168003694';
-        if (logChannel) {
-          const alertEmbed = new EmbedBuilder()
-            .setColor(0xff0000)
-            .setTitle('🚨 Unregistered Guild Registration Attempt')
-            .setDescription(`A user tried to register from a guild that is not registered.`)
-            .addFields(
-              { name: 'User', value: `<@${discordId}> (${interaction.user.tag})`, inline: true },
-              { name: 'Albion Name', value: playerInfo.Name, inline: true },
-              { name: 'Guild Name', value: playerInfo.GuildName || 'Unknown', inline: true },
-              { name: 'Guild ID', value: playerInfo.GuildId || 'N/A', inline: true }
-            )
-            .setTimestamp();
-          logChannel.send({ embeds: [alertEmbed] });
-          await logChannel.send(`<@&${modRoleId}>`);
+      if (playerInfo.GuildId) {
+        console.log(`Checking guild registration: ${playerInfo.GuildName} (${playerInfo.GuildId})`);
+        guildData = await AlbionGuild.findOne({
+          where: {
+            guildId: playerInfo.GuildId,
+            discordGuildId: interaction.guild.id
+          }
+        });
+
+        if (!guildData) {
+          shouldNotifyMods = true;
+          guildNotice = '\n\n⚠️ Your guild is not registered with this server.';
         }
+      } else {
+        console.log('Player has no guild affiliation');
+		shouldNotifyMods = true;
+        guildNotice = '\n\nℹ️ You are not currently in an Albion guild.';
       }
 
+      // Check for existing registrations
+      console.log('Checking for existing registrations...');
+      const [existingByDiscord, existingByAlbion] = await Promise.all([
+        Player.findOne({ where: { discordId } }),
+        Player.findOne({ where: { albionId: playerInfo.Id } })
+      ]);
+
+      // Handle duplicate registrations
+      if (existingByAlbion && existingByAlbion.discordId !== discordId) {
+        console.log('Duplicate Albion ID detected');
+        return interaction.editReply({
+          content: '❌ This Albion character is already registered to another user.',
+          ephemeral: true
+        });
+      }
+
+      if (existingByDiscord && existingByDiscord.albionId !== playerInfo.Id) {
+        console.log('User already registered with different character');
+        return interaction.editReply({
+          content: `❌ You are already registered as ${existingByDiscord.albionName}.`,
+          ephemeral: true
+        });
+      }
+
+      // Handle nickname and roles
       let roleAdded = 'None';
       let newNickname = playerInfo.Name;
-      let member;
+      const member = await interaction.guild.members.fetch(discordId).catch(() => null);
 
-      try {
-        member = await interaction.guild.members.fetch(discordId, { force: true });
+      if (!member) {
+        return interaction.editReply({ content: '❌ Member not found in this server.' });
+      }
 
-        if (config.editNick) {
+      // Update nickname if configured
+      if (config.editNick && member) {
+        try {
           if (config.showGuildTag && guildData?.guildTag) {
             newNickname = `[${guildData.guildTag}] ${playerInfo.Name}`;
           }
-          await member.setNickname(newNickname).catch(() => {});
+          await member.setNickname(newNickname);
+          console.log('Nickname updated');
+        } catch (error) {
+          console.error('Nickname update error:', error);
         }
-      } catch (error) {
-        console.error('Error fetching or setting nickname:', error);
-      }
-
-      if (!member) {
-        return interaction.editReply({ content: 'Member not found in the guild.' });
       }
 
       // Handle role assignment
-	// Handle role assignment with debug logging
-		try {
-		  console.log('Starting role assignment process...');
-		  
-		  // Remove allowed role if configured
-		  if (config.allowedRole) {
-			const allowedRole = interaction.guild.roles.cache.get(config.allowedRole);
-			console.log(`Allowed role resolved: ${allowedRole?.id || 'Not found'}`);
-			
-			if (allowedRole && member.roles.cache.has(allowedRole.id)) {
-			  console.log('Removing allowed role...');
-			  await member.roles.remove(allowedRole)
-				.then(() => console.log('Successfully removed allowed role'))
-				.catch(e => console.error('Failed to remove allowed role:', e));
-			}
-		  }
+      try {
+        console.log('Managing roles...');
+        
+        // Remove allowed role if configured
+        if (config.allowedRole) {
+          const allowedRole = interaction.guild.roles.cache.get(config.allowedRole);
+          if (allowedRole && member.roles.cache.has(allowedRole.id)) {
+            await member.roles.remove(allowedRole);
+            console.log('Removed allowed role');
+          }
+        }
 
-		  // Add guild role if configured
-		  if (guildInfo?.guildRole) {
-			const guildRole = interaction.guild.roles.cache.get(guildInfo.guildRole);
-			console.log(`Guild role resolved: ${guildRole?.id || 'Not found'}`);
-			
-			if (guildRole) {
-			  if (!member.roles.cache.has(guildRole.id)) {
-				console.log('Adding guild role...');
-				await member.roles.add(guildRole)
-				  .then(() => {
-					console.log('Successfully added guild role');
-					roleAdded = `<@&${guildRole.id}>`;
-				  })
-				  .catch(e => {
-					console.error('Failed to add guild role:', e);
-					throw new Error('Failed to assign guild role. Check bot permissions.');
-				  });
-			  } else {
-				console.log('Member already has the guild role');
-				roleAdded = `<@&${guildRole.id}> (already had role)`;
-			  }
-			}
-		  }
-		} catch (roleError) {
-		  console.error('Role management error:', roleError);
-		  return interaction.editReply({
-			content: '❌ Failed to update roles. Please check bot permissions and role hierarchy.',
-		  });
-		}
+        // Add guild role if available
+        if (guildData?.guildRole) {
+          const guildRole = interaction.guild.roles.cache.get(guildData.guildRole);
+          if (guildRole && !member.roles.cache.has(guildRole.id)) {
+            await member.roles.add(guildRole);
+            roleAdded = guildRole.name;
+            console.log('Added guild role');
+          }
+        }
+      } catch (roleError) {
+        console.error('Role management error:', roleError);
+      }
 
-      // Save player to DB
+      // Send mod alert if needed (unregistered guild)
+      if (shouldNotifyMods) {
+        console.log('Sending mod notification...');
+        const logChannel = interaction.guild.channels.cache.get('1378000555422646342');
+        const modRoleId = '1378004212168003694';
+        
+        if (logChannel) {
+          try {
+            const guildAlertEmbed = new EmbedBuilder()
+              .setColor(0xff0000)
+              .setTitle('🚨 Unregistered Guild Registration Attempt')
+              .setDescription(`A user tried to register from a guild that is not registered.`)
+              .addFields(
+                { name: 'User', value: `<@${discordId}> (${interaction.user.tag})`, inline: true },
+                { name: 'Albion Name', value: playerInfo.Name, inline: true },
+                { name: 'Guild Name', value: playerInfo.GuildName || 'No Guild', inline: true },
+                { name: 'Guild ID', value: playerInfo.GuildId || 'N/A', inline: true }
+              )
+              .setTimestamp();
+
+            await logChannel.send({ 
+              content: `<@&${modRoleId}>`,
+              embeds: [guildAlertEmbed] 
+            });
+            console.log('Mod notification sent');
+          } catch (error) {
+            console.error('Failed to send notification:', error);
+          }
+        }
+      }
+
+      // Save/update player in database
+      console.log('Saving player data...');
       const totalFame = (playerInfo.KillFame || 0) + (playerInfo.DeathFame || 0);
-      await Player.create({
+      
+      await Player.upsert({
         discordId,
-        albionName: playerInfo.Name,
         albionId: playerInfo.Id,
+        albionName: playerInfo.Name,
         guildId: playerInfo.GuildId,
         guildName: playerInfo.GuildName,
         killFame: playerInfo.KillFame || 0,
         deathFame: playerInfo.DeathFame || 0
       });
 
-      // Respond with success embed
+      // Success response
       const embed = new EmbedBuilder()
         .setColor('#00FF00')
         .setTitle('✅ Registration Complete')
-        .setDescription(`Successfully registered ${playerInfo.Name}`)
+        .setDescription(`Successfully registered ${playerInfo.Name}${guildNotice}`)
         .addFields(
           { name: 'Albion Online Nickname', value: playerInfo.Name, inline: true },
           { name: 'Albion Online ID', value: playerInfo.Id || 'N/A', inline: true },
@@ -176,19 +216,12 @@ module.exports = {
         .setTimestamp();
 
       await interaction.editReply({ embeds: [embed] });
+      console.log('Registration completed successfully');
 
     } catch (error) {
       console.error('Registration error:', error);
-
-      let errorMessage = 'An error occurred during registration.';
-      if (error.message.includes('not found')) {
-        errorMessage = `Character "${albionName}" not found. Check spelling and try again.`;
-      } else if (error.message.includes('Missing Permissions')) {
-        errorMessage = '❌ Bot lacks permissions to manage roles or nicknames.';
-      }
-
       await interaction.editReply({
-        content: errorMessage
+        content: '❌ An error occurred during registration. Please try again later.'
       });
     }
   }

@@ -1,0 +1,448 @@
+{"level":"info","message":"Fetching guild members: dYeCQIpES1iYAnN9LqI_jQ"}
+{"level":"debug","message":"Fetching with Axios: https://gameinfo-sgp.albiononline.com/api/gameinfo/guilds/dYeCQIpES1iYAnN9LqI_jQ/members"}
+{"level":"debug","message":"Found 47 members in guild dYeCQIpES1iYAnN9LqI_jQ"}
+{"level":"info","message":"Getting player info: Loki27"}
+{"level":"info","message":"Searching players: Loki27"}
+{"level":"debug","message":"Fetching with Axios: https://gameinfo-sgp.albiononline.com/api/gameinfo/search?q=Loki27"}
+{"level":"debug","message":"Found 4 players matching \"Loki27\""}
+{"level":"debug","message":"Fetching with Axios: https://gameinfo-sgp.albiononline.com/api/gameinfo/players/z4KJpZneQ4GGng3_ujVPjA"}
+{"level":"debug","message":"Player info retrieved for Loki27: z4KJpZneQ4GGng3_ujVPjA"}
+{"level":"info","message":"Getting player info: Loki27"}
+{"level":"info","message":"Searching players: Loki27"}
+{"level":"debug","message":"Fetching with Axios: https://gameinfo-sgp.albiononline.com/api/gameinfo/search?q=Loki27"}
+{"level":"debug","message":"Found 4 players matching \"Loki27\""}
+{"level":"debug","message":"Fetching with Axios: https://gameinfo-sgp.albiononline.com/api/gameinfo/players/z4KJpZneQ4GGng3_ujVPjA"}
+{"level":"debug","message":"Player info retrieved for Loki27: z4KJpZneQ4GGng3_ujVPjA"}
+{"level":"info","message":"Getting player info: Loki27"}
+{"level":"info","message":"Searching players: Loki27"}
+{"level":"debug","message":"Fetching with Axios: https://gameinfo-sgp.albiononline.com/api/gameinfo/search?q=Loki27"}
+{"level":"debug","message":"Found 4 players matching \"Loki27\""}
+{"level":"debug","message":"Fetching with Axios: https://gameinfo-sgp.albiononline.com/api/gameinfo/players/z4KJpZneQ4GGng3_ujVPjA"}
+{"level":"debug","message":"Player info retrieved for Loki27: z4KJpZneQ4GGng3_ujVPjA"}
+{"level":"info","message":"Getting player info: DJSHYLOW"}
+{"level":"info","message":"Searching players: DJSHYLOW"}
+{"level":"debug","message":"Fetching with Axios: https://gameinfo-sgp.albiononline.com/api/gameinfo/search?q=DJSHYLOW"}
+{"level":"debug","message":"Found 1 players matching \"DJSHYLOW\""}
+{"level":"debug","message":"Fetching with Axios: https://gameinfo-sgp.albiononline.com/api/gameinfo/players/jU6PbpnvSlaPfFGMb1iVbw"}
+{"level":"debug","message":"Player info retrieved for DJSHYLOW: jU6PbpnvSlaPfFGMb1iVbw"}
+{"level":"info","message":"Getting player info: Abverb"}
+{"level":"info","message":"Searching players: Abverb"}
+{"level":"debug","message":"Fetching with Axios: https://gameinfo-sgp.albiononline.com/api/gameinfo/search?q=Abverb"}
+{"level":"debug","message":"Found 1 players matching \"Abverb\""}
+{"level":"debug","message":"Fetching with Axios: https://gameinfo-sgp.albiononline.com/api/gameinfo/players/QvTK5sjaSRKDEpew89RZBw"}
+{"level":"debug","message":"Player info retrieved for Abverb: QvTK5sjaSRKDEpew89RZBw"}
+{"level":"info","message":"Getting player info: DJSHYLOW"}
+{"level":"info","message":"Searching players: DJSHYLOW"}
+{"level":"debug","message":"Fetching with Axios: https://gameinfo-sgp.albiononline.com/api/gameinfo/search?q=DJSHYLOW"}
+{"level":"debug","message":"Found 1 players matching \"DJSHYLOW\""}
+{"level":"debug","message":"Fetching with Axios: https://gameinfo-sgp.albiononline.com/api/gameinfo/players/jU6PbpnvSlaPfFGMb1iVbw"}
+{"level":"debug","message":"Player info retrieved for DJSHYLOW: jU6PbpnvSlaPfFGMb1iVbw"}
+{"level":"info","message":"Fetching guild members: dYeCQIpES1iYAnN9LqI_jQ"}
+{"level":"debug","message":"Fetching with Axios: https://gameinfo-sgp.albiononline.com/api/gameinfo/guilds/dYeCQIpES1iYAnN9LqI_jQ/members"}
+{"level":"debug","message":"Found 47 members in guild dYeCQIpES1iYAnN9LqI_jQ"}
+{"level":"info","message":"Getting player info: Loki27"}
+{"level":"info","message":"Searching players: Loki27"}
+{"level":"debug","message":"Fetching with Axios: https://gameinfo-sgp.albiononline.com/api/gameinfo/search?q=Loki27"}
+{"level":"debug","message":"Found 4 players matching \"Loki27\""}
+{"level":"debug","message":"Fetching with Axios: https://gameinfo-sgp.albiononline.com/api/gameinfo/players/z4KJpZneQ4GGng3_ujVPjA"}
+{"level":"debug","message":"Player info retrieved for Loki27: z4KJpZneQ4GGng3_ujVPjA"}
+{"level":"info","message":"Fetching guild members: dYeCQIpES1iYAnN9LqI_jQ"}
+{"level":"debug","message":"Fetching with Axios: https://gameinfo-sgp.albiononline.com/api/gameinfo/guilds/dYeCQIpES1iYAnN9LqI_jQ/members"}
+{"level":"debug","message":"Found 47 members in guild dYeCQIpES1iYAnN9LqI_jQ"}
+{"level":"info","message":"Getting player info: DragonBooster55"}
+{"level":"info","message":"Searching players: DragonBooster55"}
+{"level":"debug","message":"Fetching with Axios: https://gameinfo-sgp.albiononline.com/api/gameinfo/search?q=DragonBooster55"}
+{"level":"debug","message":"Found 1 players matching \"DragonBooster55\""}
+{"level":"error","message":"Failed to get player info for \"DragonBooster55\": Player \"DragonBooster55\" not found in search results"}
+{"level":"info","message":"Getting player info: DragonBooster555"}
+{"level":"info","message":"Searching players: DragonBooster555"}
+{"level":"debug","message":"Fetching with Axios: https://gameinfo-sgp.albiononline.com/api/gameinfo/search?q=DragonBooster555"}
+{"level":"debug","message":"Found 1 players matching \"DragonBooster555\""}
+{"level":"debug","message":"Fetching with Axios: https://gameinfo-sgp.albiononline.com/api/gameinfo/players/lbvtrg7qQ9yKeu8baD6c7Q"}
+{"level":"debug","message":"Player info retrieved for DragonBooster555: lbvtrg7qQ9yKeu8baD6c7Q"}
+{"level":"info","message":"Getting player info: DragonBooster555"}
+{"level":"info","message":"Searching players: DragonBooster555"}
+{"level":"debug","message":"Fetching with Axios: https://gameinfo-sgp.albiononline.com/api/gameinfo/search?q=DragonBooster555"}
+{"level":"debug","message":"Found 1 players matching \"DragonBooster555\""}
+{"level":"debug","message":"Fetching with Axios: https://gameinfo-sgp.albiononline.com/api/gameinfo/players/lbvtrg7qQ9yKeu8baD6c7Q"}
+{"level":"debug","message":"Player info retrieved for DragonBooster555: lbvtrg7qQ9yKeu8baD6c7Q"}
+{"level":"info","message":"Getting player info: DragonBooster555"}
+{"level":"info","message":"Searching players: DragonBooster555"}
+{"level":"debug","message":"Fetching with Axios: https://gameinfo-sgp.albiononline.com/api/gameinfo/search?q=DragonBooster555"}
+{"level":"debug","message":"Found 1 players matching \"DragonBooster555\""}
+{"level":"debug","message":"Fetching with Axios: https://gameinfo-sgp.albiononline.com/api/gameinfo/players/lbvtrg7qQ9yKeu8baD6c7Q"}
+{"level":"debug","message":"Player info retrieved for DragonBooster555: lbvtrg7qQ9yKeu8baD6c7Q"}
+{"level":"info","message":"Getting player info: GRAAATI"}
+{"level":"info","message":"Searching players: GRAAATI"}
+{"level":"debug","message":"Fetching with Axios: https://gameinfo-sgp.albiononline.com/api/gameinfo/search?q=GRAAATI"}
+{"level":"debug","message":"Found 0 players matching \"GRAAATI\""}
+{"level":"error","message":"Failed to get player info for \"GRAAATI\": Player \"GRAAATI\" not found in search results"}
+{"level":"info","message":"Getting player info: GRAAATTI"}
+{"level":"info","message":"Searching players: GRAAATTI"}
+{"level":"debug","message":"Fetching with Axios: https://gameinfo-sgp.albiononline.com/api/gameinfo/search?q=GRAAATTI"}
+{"level":"debug","message":"Found 1 players matching \"GRAAATTI\""}
+{"level":"debug","message":"Fetching with Axios: https://gameinfo-sgp.albiononline.com/api/gameinfo/players/418lWWSSTNqxLEYdS1HteQ"}
+{"level":"debug","message":"Player info retrieved for GRAAATTI: 418lWWSSTNqxLEYdS1HteQ"}
+{"level":"info","message":"Getting player info: oumuamuacocoa"}
+{"level":"info","message":"Searching players: oumuamuacocoa"}
+{"level":"debug","message":"Fetching with Axios: https://gameinfo-sgp.albiononline.com/api/gameinfo/search?q=oumuamuacocoa"}
+{"level":"debug","message":"Found 1 players matching \"oumuamuacocoa\""}
+{"level":"debug","message":"Fetching with Axios: https://gameinfo-sgp.albiononline.com/api/gameinfo/players/m6ViYxTmQIeqNXUGkPBeuw"}
+{"level":"debug","message":"Player info retrieved for oumuamuacocoa: m6ViYxTmQIeqNXUGkPBeuw"}
+{"level":"info","message":"Getting player info: JusticeSeeker"}
+{"level":"info","message":"Searching players: JusticeSeeker"}
+{"level":"debug","message":"Fetching with Axios: https://gameinfo-sgp.albiononline.com/api/gameinfo/search?q=JusticeSeeker"}
+{"level":"debug","message":"Found 1 players matching \"JusticeSeeker\""}
+{"level":"debug","message":"Fetching with Axios: https://gameinfo-sgp.albiononline.com/api/gameinfo/players/KXtIvdaZRcSWXUjNKeIMFQ"}
+{"level":"debug","message":"Player info retrieved for JusticeSeeker: KXtIvdaZRcSWXUjNKeIMFQ"}
+{"level":"info","message":"Getting player info: LeaveMeAloneBro0"}
+{"level":"info","message":"Searching players: LeaveMeAloneBro0"}
+{"level":"debug","message":"Fetching with Axios: https://gameinfo-sgp.albiononline.com/api/gameinfo/search?q=LeaveMeAloneBro0"}
+{"level":"debug","message":"Found 1 players matching \"LeaveMeAloneBro0\""}
+{"level":"debug","message":"Fetching with Axios: https://gameinfo-sgp.albiononline.com/api/gameinfo/players/e4ilV3Z3QIeROFCpDoZDkw"}
+{"level":"debug","message":"Player info retrieved for LeaveMeAloneBro0: e4ilV3Z3QIeROFCpDoZDkw"}
+{"level":"info","message":"Getting player info: Talgos"}
+{"level":"info","message":"Searching players: Talgos"}
+{"level":"debug","message":"Fetching with Axios: https://gameinfo-sgp.albiononline.com/api/gameinfo/search?q=Talgos"}
+{"level":"debug","message":"Found 1 players matching \"Talgos\""}
+{"level":"debug","message":"Fetching with Axios: https://gameinfo-sgp.albiononline.com/api/gameinfo/players/EZmqH_gYS6KqcpUdGm7tOw"}
+{"level":"debug","message":"Player info retrieved for Talgos: EZmqH_gYS6KqcpUdGm7tOw"}
+{"level":"info","message":"Getting player info: STORMsl2001"}
+{"level":"info","message":"Searching players: STORMsl2001"}
+{"level":"debug","message":"Fetching with Axios: https://gameinfo-sgp.albiononline.com/api/gameinfo/search?q=STORMsl2001"}
+{"level":"debug","message":"Found 1 players matching \"STORMsl2001\""}
+{"level":"debug","message":"Fetching with Axios: https://gameinfo-sgp.albiononline.com/api/gameinfo/players/IIN6vz3ATv6r2EtO8qqyDA"}
+{"level":"debug","message":"Player info retrieved for STORMsl2001: IIN6vz3ATv6r2EtO8qqyDA"}
+{"level":"info","message":"Getting player info: walkmax"}
+{"level":"info","message":"Searching players: walkmax"}
+{"level":"debug","message":"Fetching with Axios: https://gameinfo-sgp.albiononline.com/api/gameinfo/search?q=walkmax"}
+{"level":"debug","message":"Found 1 players matching \"walkmax\""}
+{"level":"debug","message":"Fetching with Axios: https://gameinfo-sgp.albiononline.com/api/gameinfo/players/uk1gdQzzQYe0qJFQ7nFIjA"}
+{"level":"debug","message":"Player info retrieved for walkmax: uk1gdQzzQYe0qJFQ7nFIjA"}
+{"level":"info","message":"Getting player info: FFrosty141"}
+{"level":"info","message":"Searching players: FFrosty141"}
+{"level":"debug","message":"Fetching with Axios: https://gameinfo-sgp.albiononline.com/api/gameinfo/search?q=FFrosty141"}
+{"level":"debug","message":"Found 1 players matching \"FFrosty141\""}
+{"level":"debug","message":"Fetching with Axios: https://gameinfo-sgp.albiononline.com/api/gameinfo/players/TNvCiYg6TMuQa5wrd_bGNA"}
+{"level":"debug","message":"Player info retrieved for FFrosty141: TNvCiYg6TMuQa5wrd_bGNA"}
+{"level":"info","message":"Getting player info: Perserk107"}
+{"level":"info","message":"Searching players: Perserk107"}
+{"level":"debug","message":"Fetching with Axios: https://gameinfo-sgp.albiononline.com/api/gameinfo/search?q=Perserk107"}
+{"level":"debug","message":"Found 1 players matching \"Perserk107\""}
+{"level":"debug","message":"Fetching with Axios: https://gameinfo-sgp.albiononline.com/api/gameinfo/players/4-jxqnrqQBGcGHo03sRqvQ"}
+{"level":"debug","message":"Player info retrieved for Perserk107: 4-jxqnrqQBGcGHo03sRqvQ"}
+{"level":"info","message":"Getting player info: Gen0ssAlb1on"}
+{"level":"info","message":"Searching players: Gen0ssAlb1on"}
+{"level":"debug","message":"Fetching with Axios: https://gameinfo-sgp.albiononline.com/api/gameinfo/search?q=Gen0ssAlb1on"}
+{"level":"debug","message":"Found 1 players matching \"Gen0ssAlb1on\""}
+{"level":"debug","message":"Fetching with Axios: https://gameinfo-sgp.albiononline.com/api/gameinfo/players/F4BnkOiuTv2fz5s_gTjLBg"}
+{"level":"debug","message":"Player info retrieved for Gen0ssAlb1on: F4BnkOiuTv2fz5s_gTjLBg"}
+{"level":"info","message":"Getting player info: mobounce"}
+{"level":"info","message":"Searching players: mobounce"}
+{"level":"debug","message":"Fetching with Axios: https://gameinfo-sgp.albiononline.com/api/gameinfo/search?q=mobounce"}
+{"level":"debug","message":"Found 1 players matching \"mobounce\""}
+{"level":"debug","message":"Fetching with Axios: https://gameinfo-sgp.albiononline.com/api/gameinfo/players/lbFLkpW7RhWnQzeA0RPK2w"}
+{"level":"debug","message":"Player info retrieved for mobounce: lbFLkpW7RhWnQzeA0RPK2w"}
+{"level":"info","message":"Getting player info: susha12"}
+{"level":"info","message":"Searching players: susha12"}
+{"level":"debug","message":"Fetching with Axios: https://gameinfo-sgp.albiononline.com/api/gameinfo/search?q=susha12"}
+{"level":"debug","message":"Found 1 players matching \"susha12\""}
+{"level":"debug","message":"Fetching with Axios: https://gameinfo-sgp.albiononline.com/api/gameinfo/players/4kp1Elo5SjOAXEy4OZUbNg"}
+{"level":"debug","message":"Player info retrieved for susha12: 4kp1Elo5SjOAXEy4OZUbNg"}
+{"level":"info","message":"Getting player info: DJSHYLOW"}
+{"level":"info","message":"Searching players: DJSHYLOW"}
+{"level":"debug","message":"Fetching with Axios: https://gameinfo-sgp.albiononline.com/api/gameinfo/search?q=DJSHYLOW"}
+{"level":"debug","message":"Found 1 players matching \"DJSHYLOW\""}
+{"level":"debug","message":"Fetching with Axios: https://gameinfo-sgp.albiononline.com/api/gameinfo/players/jU6PbpnvSlaPfFGMb1iVbw"}
+{"level":"debug","message":"Player info retrieved for DJSHYLOW: jU6PbpnvSlaPfFGMb1iVbw"}
+{"level":"info","message":"Getting player info: Loki27"}
+{"level":"info","message":"Searching players: Loki27"}
+{"level":"debug","message":"Fetching with Axios: https://gameinfo-sgp.albiononline.com/api/gameinfo/search?q=Loki27"}
+{"level":"debug","message":"Found 4 players matching \"Loki27\""}
+{"level":"debug","message":"Fetching with Axios: https://gameinfo-sgp.albiononline.com/api/gameinfo/players/z4KJpZneQ4GGng3_ujVPjA"}
+{"level":"debug","message":"Player info retrieved for Loki27: z4KJpZneQ4GGng3_ujVPjA"}
+{"level":"info","message":"Getting player info: DragonBooster555"}
+{"level":"info","message":"Searching players: DragonBooster555"}
+{"level":"debug","message":"Fetching with Axios: https://gameinfo-sgp.albiononline.com/api/gameinfo/search?q=DragonBooster555"}
+{"level":"debug","message":"Found 1 players matching \"DragonBooster555\""}
+{"level":"debug","message":"Fetching with Axios: https://gameinfo-sgp.albiononline.com/api/gameinfo/players/lbvtrg7qQ9yKeu8baD6c7Q"}
+{"level":"debug","message":"Player info retrieved for DragonBooster555: lbvtrg7qQ9yKeu8baD6c7Q"}
+{"level":"info","message":"Getting player info: GRAAATTI"}
+{"level":"info","message":"Searching players: GRAAATTI"}
+{"level":"debug","message":"Fetching with Axios: https://gameinfo-sgp.albiononline.com/api/gameinfo/search?q=GRAAATTI"}
+{"level":"debug","message":"Found 1 players matching \"GRAAATTI\""}
+{"level":"debug","message":"Fetching with Axios: https://gameinfo-sgp.albiononline.com/api/gameinfo/players/418lWWSSTNqxLEYdS1HteQ"}
+{"level":"debug","message":"Player info retrieved for GRAAATTI: 418lWWSSTNqxLEYdS1HteQ"}
+{"level":"info","message":"Getting player info: Samutana"}
+{"level":"info","message":"Searching players: Samutana"}
+{"level":"debug","message":"Fetching with Axios: https://gameinfo-sgp.albiononline.com/api/gameinfo/search?q=Samutana"}
+{"level":"debug","message":"Found 2 players matching \"Samutana\""}
+{"level":"debug","message":"Fetching with Axios: https://gameinfo-sgp.albiononline.com/api/gameinfo/players/APp8HZgxTAaD8HhQAAOh8Q"}
+{"level":"debug","message":"Player info retrieved for Samutana: APp8HZgxTAaD8HhQAAOh8Q"}
+{"level":"info","message":"Getting player info: MirokuSama"}
+{"level":"info","message":"Searching players: MirokuSama"}
+{"level":"debug","message":"Fetching with Axios: https://gameinfo-sgp.albiononline.com/api/gameinfo/search?q=MirokuSama"}
+{"level":"debug","message":"Found 1 players matching \"MirokuSama\""}
+{"level":"debug","message":"Fetching with Axios: https://gameinfo-sgp.albiononline.com/api/gameinfo/players/vQ9WrVp4TfumIpTQTSkT8g"}
+{"level":"debug","message":"Player info retrieved for MirokuSama: vQ9WrVp4TfumIpTQTSkT8g"}
+{"level":"info","message":"Getting player info: Cyshadouken"}
+{"level":"info","message":"Searching players: Cyshadouken"}
+{"level":"debug","message":"Fetching with Axios: https://gameinfo-sgp.albiononline.com/api/gameinfo/search?q=Cyshadouken"}
+{"level":"debug","message":"Found 1 players matching \"Cyshadouken\""}
+{"level":"debug","message":"Fetching with Axios: https://gameinfo-sgp.albiononline.com/api/gameinfo/players/VchGrDyASS-9wp_47-T00w"}
+{"level":"debug","message":"Player info retrieved for Cyshadouken: VchGrDyASS-9wp_47-T00w"}
+{"level":"info","message":"Getting player info: oumuamuacocoa"}
+{"level":"info","message":"Searching players: oumuamuacocoa"}
+{"level":"debug","message":"Fetching with Axios: https://gameinfo-sgp.albiononline.com/api/gameinfo/search?q=oumuamuacocoa"}
+{"level":"debug","message":"Found 1 players matching \"oumuamuacocoa\""}
+{"level":"debug","message":"Fetching with Axios: https://gameinfo-sgp.albiononline.com/api/gameinfo/players/m6ViYxTmQIeqNXUGkPBeuw"}
+{"level":"debug","message":"Player info retrieved for oumuamuacocoa: m6ViYxTmQIeqNXUGkPBeuw"}
+{"level":"info","message":"Getting player info: WitRot"}
+{"level":"info","message":"Searching players: WitRot"}
+{"level":"debug","message":"Fetching with Axios: https://gameinfo-sgp.albiononline.com/api/gameinfo/search?q=WitRot"}
+{"level":"debug","message":"Found 1 players matching \"WitRot\""}
+{"level":"debug","message":"Fetching with Axios: https://gameinfo-sgp.albiononline.com/api/gameinfo/players/J6L_k6bWSQCk1HHnFMpshg"}
+{"level":"debug","message":"Player info retrieved for WitRot: J6L_k6bWSQCk1HHnFMpshg"}
+{"level":"info","message":"Getting player info: Nefeutura"}
+{"level":"info","message":"Searching players: Nefeutura"}
+{"level":"debug","message":"Fetching with Axios: https://gameinfo-sgp.albiononline.com/api/gameinfo/search?q=Nefeutura"}
+{"level":"debug","message":"Found 1 players matching \"Nefeutura\""}
+{"level":"debug","message":"Fetching with Axios: https://gameinfo-sgp.albiononline.com/api/gameinfo/players/8zN6tKjZRBilztylH3BWpw"}
+{"level":"debug","message":"Player info retrieved for Nefeutura: 8zN6tKjZRBilztylH3BWpw"}
+{"level":"info","message":"Getting player info: BananaMelon"}
+{"level":"info","message":"Searching players: BananaMelon"}
+{"level":"debug","message":"Fetching with Axios: https://gameinfo-sgp.albiononline.com/api/gameinfo/search?q=BananaMelon"}
+{"level":"debug","message":"Found 1 players matching \"BananaMelon\""}
+{"level":"debug","message":"Fetching with Axios: https://gameinfo-sgp.albiononline.com/api/gameinfo/players/EGIEvoayTlWzD9yPUQucMA"}
+{"level":"debug","message":"Player info retrieved for BananaMelon: EGIEvoayTlWzD9yPUQucMA"}
+{"level":"info","message":"Getting player info: EmbunaArtalia"}
+{"level":"info","message":"Searching players: EmbunaArtalia"}
+{"level":"debug","message":"Fetching with Axios: https://gameinfo-sgp.albiononline.com/api/gameinfo/search?q=EmbunaArtalia"}
+{"level":"debug","message":"Found 1 players matching \"EmbunaArtalia\""}
+{"level":"debug","message":"Fetching with Axios: https://gameinfo-sgp.albiononline.com/api/gameinfo/players/IzV5HFuUSMWdUmZcgZAIIQ"}
+{"level":"debug","message":"Player info retrieved for EmbunaArtalia: IzV5HFuUSMWdUmZcgZAIIQ"}
+{"level":"info","message":"Getting player info: Ustralis"}
+{"level":"info","message":"Searching players: Ustralis"}
+{"level":"debug","message":"Fetching with Axios: https://gameinfo-sgp.albiononline.com/api/gameinfo/search?q=Ustralis"}
+{"level":"debug","message":"Found 1 players matching \"Ustralis\""}
+{"level":"debug","message":"Fetching with Axios: https://gameinfo-sgp.albiononline.com/api/gameinfo/players/-_ZrbWOiT5-dKV6jIETIVg"}
+{"level":"debug","message":"Player info retrieved for Ustralis: -_ZrbWOiT5-dKV6jIETIVg"}
+{"level":"info","message":"Getting player info: Braull"}
+{"level":"info","message":"Searching players: Braull"}
+{"level":"debug","message":"Fetching with Axios: https://gameinfo-sgp.albiononline.com/api/gameinfo/search?q=Braull"}
+{"level":"debug","message":"Found 1 players matching \"Braull\""}
+{"level":"debug","message":"Fetching with Axios: https://gameinfo-sgp.albiononline.com/api/gameinfo/players/AH7YynPfRSmpg3qy8Zqr4Q"}
+{"level":"debug","message":"Player info retrieved for Braull: AH7YynPfRSmpg3qy8Zqr4Q"}
+{"level":"info","message":"Getting player info: NeverWinWasHere"}
+{"level":"info","message":"Searching players: NeverWinWasHere"}
+{"level":"debug","message":"Fetching with Axios: https://gameinfo-sgp.albiononline.com/api/gameinfo/search?q=NeverWinWasHere"}
+{"level":"debug","message":"Found 1 players matching \"NeverWinWasHere\""}
+{"level":"debug","message":"Fetching with Axios: https://gameinfo-sgp.albiononline.com/api/gameinfo/players/BKRA07C0RlyFw4mT2RwbDg"}
+{"level":"debug","message":"Player info retrieved for NeverWinWasHere: BKRA07C0RlyFw4mT2RwbDg"}
+{"level":"info","message":"Getting player info: tahmzy"}
+{"level":"info","message":"Searching players: tahmzy"}
+{"level":"debug","message":"Fetching with Axios: https://gameinfo-sgp.albiononline.com/api/gameinfo/search?q=tahmzy"}
+{"level":"debug","message":"Found 1 players matching \"tahmzy\""}
+{"level":"debug","message":"Fetching with Axios: https://gameinfo-sgp.albiononline.com/api/gameinfo/players/ezxsKe6-RPOx0hetIyYlZw"}
+{"level":"debug","message":"Player info retrieved for tahmzy: ezxsKe6-RPOx0hetIyYlZw"}
+{"level":"info","message":"Getting player info: JusticeSeeker"}
+{"level":"info","message":"Searching players: JusticeSeeker"}
+{"level":"debug","message":"Fetching with Axios: https://gameinfo-sgp.albiononline.com/api/gameinfo/search?q=JusticeSeeker"}
+{"level":"debug","message":"Found 1 players matching \"JusticeSeeker\""}
+{"level":"debug","message":"Fetching with Axios: https://gameinfo-sgp.albiononline.com/api/gameinfo/players/KXtIvdaZRcSWXUjNKeIMFQ"}
+{"level":"debug","message":"Player info retrieved for JusticeSeeker: KXtIvdaZRcSWXUjNKeIMFQ"}
+{"level":"info","message":"Getting player info: LeaveMeAloneBro0"}
+{"level":"info","message":"Searching players: LeaveMeAloneBro0"}
+{"level":"debug","message":"Fetching with Axios: https://gameinfo-sgp.albiononline.com/api/gameinfo/search?q=LeaveMeAloneBro0"}
+{"level":"debug","message":"Found 1 players matching \"LeaveMeAloneBro0\""}
+{"level":"debug","message":"Fetching with Axios: https://gameinfo-sgp.albiononline.com/api/gameinfo/players/e4ilV3Z3QIeROFCpDoZDkw"}
+{"level":"debug","message":"Player info retrieved for LeaveMeAloneBro0: e4ilV3Z3QIeROFCpDoZDkw"}
+{"level":"info","message":"Getting player info: Talgos"}
+{"level":"info","message":"Searching players: Talgos"}
+{"level":"debug","message":"Fetching with Axios: https://gameinfo-sgp.albiononline.com/api/gameinfo/search?q=Talgos"}
+{"level":"debug","message":"Found 1 players matching \"Talgos\""}
+{"level":"debug","message":"Fetching with Axios: https://gameinfo-sgp.albiononline.com/api/gameinfo/players/EZmqH_gYS6KqcpUdGm7tOw"}
+{"level":"debug","message":"Player info retrieved for Talgos: EZmqH_gYS6KqcpUdGm7tOw"}
+{"level":"info","message":"Getting player info: Perserk107"}
+{"level":"info","message":"Searching players: Perserk107"}
+{"level":"debug","message":"Fetching with Axios: https://gameinfo-sgp.albiononline.com/api/gameinfo/search?q=Perserk107"}
+{"level":"debug","message":"Found 1 players matching \"Perserk107\""}
+{"level":"debug","message":"Fetching with Axios: https://gameinfo-sgp.albiononline.com/api/gameinfo/players/4-jxqnrqQBGcGHo03sRqvQ"}
+{"level":"debug","message":"Player info retrieved for Perserk107: 4-jxqnrqQBGcGHo03sRqvQ"}
+{"level":"info","message":"Getting player info: mobounce"}
+{"level":"info","message":"Searching players: mobounce"}
+{"level":"debug","message":"Fetching with Axios: https://gameinfo-sgp.albiononline.com/api/gameinfo/search?q=mobounce"}
+{"level":"debug","message":"Found 1 players matching \"mobounce\""}
+{"level":"debug","message":"Fetching with Axios: https://gameinfo-sgp.albiononline.com/api/gameinfo/players/lbFLkpW7RhWnQzeA0RPK2w"}
+{"level":"debug","message":"Player info retrieved for mobounce: lbFLkpW7RhWnQzeA0RPK2w"}
+{"level":"info","message":"Getting player info: Hazer77385633"}
+{"level":"info","message":"Searching players: Hazer77385633"}
+{"level":"debug","message":"Fetching with Axios: https://gameinfo-sgp.albiononline.com/api/gameinfo/search?q=Hazer77385633"}
+{"level":"debug","message":"Found 1 players matching \"Hazer77385633\""}
+{"level":"debug","message":"Fetching with Axios: https://gameinfo-sgp.albiononline.com/api/gameinfo/players/nUWFbQDAQwuHhyyDp895Zg"}
+{"level":"debug","message":"Player info retrieved for Hazer77385633: nUWFbQDAQwuHhyyDp895Zg"}
+{"level":"info","message":"Getting player info: Brokont"}
+{"level":"info","message":"Searching players: Brokont"}
+{"level":"debug","message":"Fetching with Axios: https://gameinfo-sgp.albiononline.com/api/gameinfo/search?q=Brokont"}
+{"level":"debug","message":"Found 1 players matching \"Brokont\""}
+{"level":"debug","message":"Fetching with Axios: https://gameinfo-sgp.albiononline.com/api/gameinfo/players/O9dl3bTmTfqcvKTvuBcYRw"}
+{"level":"debug","message":"Player info retrieved for Brokont: O9dl3bTmTfqcvKTvuBcYRw"}
+{"level":"info","message":"Getting player info: 0Friede"}
+{"level":"info","message":"Searching players: 0Friede"}
+{"level":"debug","message":"Fetching with Axios: https://gameinfo-sgp.albiononline.com/api/gameinfo/search?q=0Friede"}
+{"level":"debug","message":"Found 1 players matching \"0Friede\""}
+{"level":"debug","message":"Fetching with Axios: https://gameinfo-sgp.albiononline.com/api/gameinfo/players/Pcb-EDiVRoeKYYpOkP7kVw"}
+{"level":"debug","message":"Player info retrieved for 0Friede: Pcb-EDiVRoeKYYpOkP7kVw"}
+{"level":"info","message":"Getting player info: LaskarKelamin"}
+{"level":"info","message":"Searching players: LaskarKelamin"}
+{"level":"debug","message":"Fetching with Axios: https://gameinfo-sgp.albiononline.com/api/gameinfo/search?q=LaskarKelamin"}
+{"level":"debug","message":"Found 1 players matching \"LaskarKelamin\""}
+{"level":"debug","message":"Fetching with Axios: https://gameinfo-sgp.albiononline.com/api/gameinfo/players/CROufHCwTBWzKb4p9lIqTQ"}
+{"level":"debug","message":"Player info retrieved for LaskarKelamin: CROufHCwTBWzKb4p9lIqTQ"}
+{"level":"info","message":"Getting player info: nyop"}
+{"level":"info","message":"Searching players: nyop"}
+{"level":"debug","message":"Fetching with Axios: https://gameinfo-sgp.albiononline.com/api/gameinfo/search?q=nyop"}
+{"level":"debug","message":"Found 8 players matching \"nyop\""}
+{"level":"debug","message":"Fetching with Axios: https://gameinfo-sgp.albiononline.com/api/gameinfo/players/ncx8-YpwRH2LqiyTdg7IAw"}
+{"level":"debug","message":"Player info retrieved for nyop: ncx8-YpwRH2LqiyTdg7IAw"}
+{"level":"info","message":"Getting player info: susha12"}
+{"level":"info","message":"Searching players: susha12"}
+{"level":"debug","message":"Fetching with Axios: https://gameinfo-sgp.albiononline.com/api/gameinfo/search?q=susha12"}
+{"level":"debug","message":"Found 1 players matching \"susha12\""}
+{"level":"debug","message":"Fetching with Axios: https://gameinfo-sgp.albiononline.com/api/gameinfo/players/4kp1Elo5SjOAXEy4OZUbNg"}
+{"level":"debug","message":"Player info retrieved for susha12: 4kp1Elo5SjOAXEy4OZUbNg"}
+{"level":"info","message":"Getting player info: oumuamuacocoa"}
+{"level":"info","message":"Searching players: oumuamuacocoa"}
+{"level":"debug","message":"Fetching with Axios: https://gameinfo-sgp.albiononline.com/api/gameinfo/search?q=oumuamuacocoa"}
+{"level":"debug","message":"Found 1 players matching \"oumuamuacocoa\""}
+{"level":"debug","message":"Fetching with Axios: https://gameinfo-sgp.albiononline.com/api/gameinfo/players/m6ViYxTmQIeqNXUGkPBeuw"}
+{"level":"debug","message":"Player info retrieved for oumuamuacocoa: m6ViYxTmQIeqNXUGkPBeuw"}
+{"level":"info","message":"Getting player info: JusticeSeeker"}
+{"level":"info","message":"Searching players: JusticeSeeker"}
+{"level":"debug","message":"Fetching with Axios: https://gameinfo-sgp.albiononline.com/api/gameinfo/search?q=JusticeSeeker"}
+{"level":"debug","message":"Found 1 players matching \"JusticeSeeker\""}
+{"level":"debug","message":"Fetching with Axios: https://gameinfo-sgp.albiononline.com/api/gameinfo/players/KXtIvdaZRcSWXUjNKeIMFQ"}
+{"level":"debug","message":"Player info retrieved for JusticeSeeker: KXtIvdaZRcSWXUjNKeIMFQ"}
+{"level":"info","message":"Getting player info: LeaveMeAloneBro0"}
+{"level":"info","message":"Searching players: LeaveMeAloneBro0"}
+{"level":"debug","message":"Fetching with Axios: https://gameinfo-sgp.albiononline.com/api/gameinfo/search?q=LeaveMeAloneBro0"}
+{"level":"debug","message":"Found 1 players matching \"LeaveMeAloneBro0\""}
+{"level":"debug","message":"Fetching with Axios: https://gameinfo-sgp.albiononline.com/api/gameinfo/players/e4ilV3Z3QIeROFCpDoZDkw"}
+{"level":"debug","message":"Player info retrieved for LeaveMeAloneBro0: e4ilV3Z3QIeROFCpDoZDkw"}
+{"level":"info","message":"Getting player info: Talgos"}
+{"level":"info","message":"Searching players: Talgos"}
+{"level":"debug","message":"Fetching with Axios: https://gameinfo-sgp.albiononline.com/api/gameinfo/search?q=Talgos"}
+{"level":"debug","message":"Found 1 players matching \"Talgos\""}
+{"level":"debug","message":"Fetching with Axios: https://gameinfo-sgp.albiononline.com/api/gameinfo/players/EZmqH_gYS6KqcpUdGm7tOw"}
+{"level":"debug","message":"Player info retrieved for Talgos: EZmqH_gYS6KqcpUdGm7tOw"}
+{"level":"info","message":"Getting player info: Perserk107"}
+{"level":"info","message":"Searching players: Perserk107"}
+{"level":"debug","message":"Fetching with Axios: https://gameinfo-sgp.albiononline.com/api/gameinfo/search?q=Perserk107"}
+{"level":"debug","message":"Found 1 players matching \"Perserk107\""}
+{"level":"debug","message":"Fetching with Axios: https://gameinfo-sgp.albiononline.com/api/gameinfo/players/4-jxqnrqQBGcGHo03sRqvQ"}
+{"level":"debug","message":"Player info retrieved for Perserk107: 4-jxqnrqQBGcGHo03sRqvQ"}
+{"level":"info","message":"Getting player info: mobounce"}
+{"level":"info","message":"Searching players: mobounce"}
+{"level":"debug","message":"Fetching with Axios: https://gameinfo-sgp.albiononline.com/api/gameinfo/search?q=mobounce"}
+{"level":"debug","message":"Found 1 players matching \"mobounce\""}
+{"level":"debug","message":"Fetching with Axios: https://gameinfo-sgp.albiononline.com/api/gameinfo/players/lbFLkpW7RhWnQzeA0RPK2w"}
+{"level":"debug","message":"Player info retrieved for mobounce: lbFLkpW7RhWnQzeA0RPK2w"}
+{"level":"info","message":"Getting player info: susha12"}
+{"level":"info","message":"Searching players: susha12"}
+{"level":"debug","message":"Fetching with Axios: https://gameinfo-sgp.albiononline.com/api/gameinfo/search?q=susha12"}
+{"level":"debug","message":"Found 1 players matching \"susha12\""}
+{"level":"debug","message":"Fetching with Axios: https://gameinfo-sgp.albiononline.com/api/gameinfo/players/4kp1Elo5SjOAXEy4OZUbNg"}
+{"level":"debug","message":"Player info retrieved for susha12: 4kp1Elo5SjOAXEy4OZUbNg"}
+{"level":"info","message":"Getting player info: Marimo"}
+{"level":"info","message":"Searching players: Marimo"}
+{"level":"debug","message":"Fetching with Axios: https://gameinfo-sgp.albiononline.com/api/gameinfo/search?q=Marimo"}
+{"level":"debug","message":"Found 10 players matching \"Marimo\""}
+{"level":"debug","message":"Fetching with Axios: https://gameinfo-sgp.albiononline.com/api/gameinfo/players/ivP-uv7pQG--2Khtn0S34Q"}
+{"level":"debug","message":"Player info retrieved for Marimo: ivP-uv7pQG--2Khtn0S34Q"}
+{"level":"info","message":"Getting player info: Marimo"}
+{"level":"info","message":"Searching players: Marimo"}
+{"level":"debug","message":"Fetching with Axios: https://gameinfo-sgp.albiononline.com/api/gameinfo/search?q=Marimo"}
+{"level":"debug","message":"Found 10 players matching \"Marimo\""}
+{"level":"debug","message":"Fetching with Axios: https://gameinfo-sgp.albiononline.com/api/gameinfo/players/ivP-uv7pQG--2Khtn0S34Q"}
+{"level":"debug","message":"Player info retrieved for Marimo: ivP-uv7pQG--2Khtn0S34Q"}
+{"level":"info","message":"Getting player info: Marimo"}
+{"level":"info","message":"Searching players: Marimo"}
+{"level":"debug","message":"Fetching with Axios: https://gameinfo-sgp.albiononline.com/api/gameinfo/search?q=Marimo"}
+{"level":"debug","message":"Found 10 players matching \"Marimo\""}
+{"level":"debug","message":"Fetching with Axios: https://gameinfo-sgp.albiononline.com/api/gameinfo/players/ivP-uv7pQG--2Khtn0S34Q"}
+{"level":"debug","message":"Player info retrieved for Marimo: ivP-uv7pQG--2Khtn0S34Q"}
+{"level":"info","message":"Getting player info: marimo"}
+{"level":"info","message":"Searching players: marimo"}
+{"level":"debug","message":"Fetching with Axios: https://gameinfo-sgp.albiononline.com/api/gameinfo/search?q=marimo"}
+{"level":"debug","message":"Found 10 players matching \"marimo\""}
+{"level":"debug","message":"Fetching with Axios: https://gameinfo-sgp.albiononline.com/api/gameinfo/players/ivP-uv7pQG--2Khtn0S34Q"}
+{"level":"debug","message":"Player info retrieved for marimo: ivP-uv7pQG--2Khtn0S34Q"}
+{"level":"info","message":"Getting player info: Flec"}
+{"level":"info","message":"Searching players: Flec"}
+{"level":"debug","message":"Fetching with Axios: https://gameinfo-sgp.albiononline.com/api/gameinfo/search?q=Flec"}
+{"level":"debug","message":"Found 10 players matching \"Flec\""}
+{"level":"debug","message":"Fetching with Axios: https://gameinfo-sgp.albiononline.com/api/gameinfo/players/40SUDQkLTUyuEEPg0fEiNw"}
+{"level":"debug","message":"Player info retrieved for Flec: 40SUDQkLTUyuEEPg0fEiNw"}
+{"level":"info","message":"Getting player info: Flec"}
+{"level":"info","message":"Searching players: Flec"}
+{"level":"debug","message":"Fetching with Axios: https://gameinfo-sgp.albiononline.com/api/gameinfo/search?q=Flec"}
+{"level":"debug","message":"Found 10 players matching \"Flec\""}
+{"level":"debug","message":"Fetching with Axios: https://gameinfo-sgp.albiononline.com/api/gameinfo/players/40SUDQkLTUyuEEPg0fEiNw"}
+{"level":"debug","message":"Player info retrieved for Flec: 40SUDQkLTUyuEEPg0fEiNw"}
+{"level":"info","message":"Getting player info: FLEC"}
+{"level":"info","message":"Searching players: FLEC"}
+{"level":"debug","message":"Fetching with Axios: https://gameinfo-sgp.albiononline.com/api/gameinfo/search?q=FLEC"}
+{"level":"debug","message":"Found 10 players matching \"FLEC\""}
+{"level":"debug","message":"Fetching with Axios: https://gameinfo-sgp.albiononline.com/api/gameinfo/players/40SUDQkLTUyuEEPg0fEiNw"}
+{"level":"debug","message":"Player info retrieved for FLEC: 40SUDQkLTUyuEEPg0fEiNw"}
+{"level":"info","message":"Getting player info: FLEC"}
+{"level":"info","message":"Searching players: FLEC"}
+{"level":"debug","message":"Fetching with Axios: https://gameinfo-sgp.albiononline.com/api/gameinfo/search?q=FLEC"}
+{"level":"debug","message":"Found 10 players matching \"FLEC\""}
+{"level":"debug","message":"Fetching with Axios: https://gameinfo-sgp.albiononline.com/api/gameinfo/players/40SUDQkLTUyuEEPg0fEiNw"}
+{"level":"debug","message":"Player info retrieved for FLEC: 40SUDQkLTUyuEEPg0fEiNw"}
+{"level":"info","message":"Getting player info: Marimo"}
+{"level":"info","message":"Searching players: Marimo"}
+{"level":"debug","message":"Fetching with Axios: https://gameinfo-sgp.albiononline.com/api/gameinfo/search?q=Marimo"}
+{"level":"debug","message":"Found 10 players matching \"Marimo\""}
+{"level":"debug","message":"Fetching with Axios: https://gameinfo-sgp.albiononline.com/api/gameinfo/players/ivP-uv7pQG--2Khtn0S34Q"}
+{"level":"debug","message":"Player info retrieved for Marimo: ivP-uv7pQG--2Khtn0S34Q"}
+{"level":"info","message":"Getting player info: Marimo"}
+{"level":"info","message":"Searching players: Marimo"}
+{"level":"debug","message":"Fetching with Axios: https://gameinfo-sgp.albiononline.com/api/gameinfo/search?q=Marimo"}
+{"level":"debug","message":"Found 10 players matching \"Marimo\""}
+{"level":"debug","message":"Fetching with Axios: https://gameinfo-sgp.albiononline.com/api/gameinfo/players/ivP-uv7pQG--2Khtn0S34Q"}
+{"level":"debug","message":"Player info retrieved for Marimo: ivP-uv7pQG--2Khtn0S34Q"}
+{"level":"info","message":"Getting player info: Marimo"}
+{"level":"info","message":"Searching players: Marimo"}
+{"level":"debug","message":"Fetching with Axios: https://gameinfo-sgp.albiononline.com/api/gameinfo/search?q=Marimo"}
+{"level":"debug","message":"Found 10 players matching \"Marimo\""}
+{"level":"debug","message":"Fetching with Axios: https://gameinfo-sgp.albiononline.com/api/gameinfo/players/ivP-uv7pQG--2Khtn0S34Q"}
+{"level":"debug","message":"Player info retrieved for Marimo: ivP-uv7pQG--2Khtn0S34Q"}
+{"level":"info","message":"Fetching guild members: dYeCQIpES1iYAnN9LqI_jQ"}
+{"level":"debug","message":"Fetching with Axios: https://gameinfo-sgp.albiononline.com/api/gameinfo/guilds/dYeCQIpES1iYAnN9LqI_jQ/members"}
+{"level":"debug","message":"Found 48 members in guild dYeCQIpES1iYAnN9LqI_jQ"}
+{"level":"info","message":"Getting player info: Marimo"}
+{"level":"info","message":"Searching players: Marimo"}
+{"level":"debug","message":"Fetching with Axios: https://gameinfo-sgp.albiononline.com/api/gameinfo/search?q=Marimo"}
+{"level":"debug","message":"Found 10 players matching \"Marimo\""}
+{"level":"debug","message":"Fetching with Axios: https://gameinfo-sgp.albiononline.com/api/gameinfo/players/ivP-uv7pQG--2Khtn0S34Q"}
+{"level":"debug","message":"Player info retrieved for Marimo: ivP-uv7pQG--2Khtn0S34Q"}
+{"level":"info","message":"Getting player info: Marimo"}
+{"level":"info","message":"Searching players: Marimo"}
+{"level":"debug","message":"Fetching with Axios: https://gameinfo-sgp.albiononline.com/api/gameinfo/search?q=Marimo"}
+{"level":"debug","message":"Found 10 players matching \"Marimo\""}
+{"level":"debug","message":"Fetching with Axios: https://gameinfo-sgp.albiononline.com/api/gameinfo/players/ivP-uv7pQG--2Khtn0S34Q"}
+{"level":"debug","message":"Player info retrieved for Marimo: ivP-uv7pQG--2Khtn0S34Q"}
+{"level":"info","message":"Getting player info: MARIMO"}
+{"level":"info","message":"Searching players: MARIMO"}
+{"level":"debug","message":"Fetching with Axios: https://gameinfo-sgp.albiononline.com/api/gameinfo/search?q=MARIMO"}
+{"level":"debug","message":"Found 10 players matching \"MARIMO\""}
+{"level":"debug","message":"Fetching with Axios: https://gameinfo-sgp.albiononline.com/api/gameinfo/players/ivP-uv7pQG--2Khtn0S34Q"}
+{"level":"debug","message":"Player info retrieved for MARIMO: ivP-uv7pQG--2Khtn0S34Q"}
+{"level":"info","message":"Getting player info: Marimo"}
+{"level":"info","message":"Searching players: Marimo"}
+{"level":"debug","message":"Fetching with Axios: https://gameinfo-sgp.albiononline.com/api/gameinfo/search?q=Marimo"}
+{"level":"debug","message":"Found 10 players matching \"Marimo\""}
+{"level":"debug","message":"Fetching with Axios: https://gameinfo-sgp.albiononline.com/api/gameinfo/players/ivP-uv7pQG--2Khtn0S34Q"}
+{"level":"debug","message":"Player info retrieved for Marimo: ivP-uv7pQG--2Khtn0S34Q"}
