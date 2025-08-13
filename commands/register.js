@@ -179,6 +179,39 @@ module.exports = {
         }
       }
 
+		// Send welcome message to general chat
+		const welcomeChannelId = '1376085914870222919'; // Replace with your actual channel ID
+		const welcomeChannel = interaction.guild.channels.cache.get(welcomeChannelId);
+
+		if (welcomeChannel) {
+		try {
+		  const adminMentions = [
+			'1332768976282849360',
+			'270443637865709570',
+			'688009786276708415',
+			'1290995422067949593'
+		  ].map(id => `<@${id}>`).join(', ');
+
+		  await welcomeChannel.send(`
+		Welcome to Vicarious, <@${discordId}>!
+
+		Please refer to channel <#1380027924173946881>. We recommend you follow the Mist Tutorial.
+
+		Please make sure to check channel <#1400474742607319172> as it contains details about alliance.
+
+		Any questions? Please type in this channel as our friendly community is there to support you. 
+		Do you need activity? Ask! We are all working people. Nobody is forced to do content.
+
+		Have fun! Enjoy!
+
+		Leadership: ${adminMentions}
+		  `);
+		  console.log('Welcome message sent');
+		} catch (error) {
+		  console.error('Failed to send welcome message:', error);
+		}
+		}
+
       // Save/update player in database
       console.log('Saving player data...');
       const totalFame = (playerInfo.KillFame || 0) + (playerInfo.DeathFame || 0);

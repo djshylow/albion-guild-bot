@@ -80,104 +80,102 @@ module.exports = {
         return interaction.editReply({ content: '❌ You must provide either an Albion name or ID.' });
       }
 
-	// In the register subcommand of admin.js, update the player lookup section:
-
-	try {
-		let playerInfo;
-		
-		if (albionId) {
-			// Directly fetch by ID
-			playerInfo = await AlbionAPI.getPlayerById(albionId);
-			
-			// Verify guild registration if player is in a guild
-			if (playerInfo.GuildId) {
-				const guildData = await AlbionGuild.findOne({
-					where: {
-						guildId: playerInfo.GuildId,
-						discordGuildId: interaction.guild.id
-					}
-				});
-				
-				if (!guildData) {
-					return interaction.editReply({
-						content: `❌ This player's guild (${playerInfo.GuildName}) is not registered.\n` +
-								`Please register it first with \`/guild add\``
-					});
-				}
-			}
-		} else {
-			// Search by name
-			const players = await AlbionAPI.searchPlayers(albionName);
-			
-			// First try exact name match in registered guilds
-			for (const player of players) {
-				if (player.Name.toLowerCase() === albionName.toLowerCase() && player.GuildId) {
-					const guildData = await AlbionGuild.findOne({
-						where: {
-							guildId: player.GuildId,
-							discordGuildId: interaction.guild.id
-						}
-					});
-					
-					if (guildData) {
-						// Get full player details
-						const details = await AlbionAPI.getPlayerById(player.Id);
-						playerInfo = { ...player, ...details };
-						break;
-					}
-				}
-			}
-			
-			// If no exact match in registered guilds, try any exact name match
-			if (!playerInfo) {
-				playerInfo = players.find(p => p.Name.toLowerCase() === albionName.toLowerCase());
-				
-				if (playerInfo && playerInfo.GuildId) {
-					const guildData = await AlbionGuild.findOne({
-						where: {
-							guildId: playerInfo.GuildId,
-							discordGuildId: interaction.guild.id
-						}
-					});
-					
-					if (!guildData) {
-						return interaction.editReply({
-							content: `❌ Player found but their guild (${playerInfo.GuildName}) is not registered.\n` +
-									`Please register it first with \`/guild add\``
-						});
-					}
-					
-					// Get full player details
-					const details = await AlbionAPI.getPlayerById(playerInfo.Id);
-					playerInfo = { ...playerInfo, ...details };
-				}
-			}
-			
-			// If still no match
-			if (!playerInfo) {
-				const similarPlayers = players
-					.filter(p => p.Name.toLowerCase().includes(albionName.toLowerCase()))
-					.slice(0, 5);
-				
-				if (similarPlayers.length > 0) {
-					const options = similarPlayers.map((p, i) => 
-						`${i+1}. ${p.Name} ${p.GuildName ? `[${p.GuildName}]` : '(No Guild)'}`
-					).join('\n');
-					
-					return interaction.editReply({
-						content: `Multiple similar players found:\n${options}\n\n` +
-								'Please either:\n' +
-								'1. Use the exact character name\n' +
-								'2. Use the Albion ID (/whois in game)\n' +
-								'3. Register their guild first using `/guild add`'
-					});
-				}
-				
-				return interaction.editReply({ 
-					content: `❌ No player found matching "${albionName}"`
-				});
-			}
-		}
+      try {
+        let playerInfo;
+        
+        if (albionId) {
+          // Directly fetch by ID
+          playerInfo = await AlbionAPI.getPlayerById(albionId);
+          
+          // Verify guild registration if player is in a guild
+          if (playerInfo.GuildId) {
+            const guildData = await AlbionGuild.findOne({
+              where: {
+                guildId: playerInfo.GuildId,
+                discordGuildId: interaction.guild.id
+              }
+            });
+            
+            if (!guildData) {
+              return interaction.editReply({
+                content: `❌ This player's guild (${playerInfo.GuildName}) is not registered.\n` +
+                        `Please register it first with \`/guild add\``
+              });
+            }
+          }
+        } else {
+          // Search by name
+          const players = await AlbionAPI.searchPlayers(albionName);
+          
+          // First try exact name match in registered guilds
+          for (const player of players) {
+            if (player.Name.toLowerCase() === albionName.toLowerCase() && player.GuildId) {
+              const guildData = await AlbionGuild.findOne({
+                where: {
+                  guildId: player.GuildId,
+                  discordGuildId: interaction.guild.id
+                }
+              });
+              
+              if (guildData) {
+                // Get full player details
+                const details = await AlbionAPI.getPlayerById(player.Id);
+                playerInfo = { ...player, ...details };
+                break;
+              }
+            }
+          }
+          
+          // If no exact match in registered guilds, try any exact name match
+          if (!playerInfo) {
+            playerInfo = players.find(p => p.Name.toLowerCase() === albionName.toLowerCase());
+            
+            if (playerInfo && playerInfo.GuildId) {
+              const guildData = await AlbionGuild.findOne({
+                where: {
+                  guildId: playerInfo.GuildId,
+                  discordGuildId: interaction.guild.id
+                }
+              });
+              
+              if (!guildData) {
+                return interaction.editReply({
+                  content: `❌ Player found but their guild (${playerInfo.GuildName}) is not registered.\n` +
+                          `Please register it first with \`/guild add\``
+                });
+              }
+              
+              // Get full player details
+              const details = await AlbionAPI.getPlayerById(playerInfo.Id);
+              playerInfo = { ...playerInfo, ...details };
+            }
+          }
+          
+          // If still no match
+          if (!playerInfo) {
+            const similarPlayers = players
+              .filter(p => p.Name.toLowerCase().includes(albionName.toLowerCase()))
+              .slice(0, 5);
+            
+            if (similarPlayers.length > 0) {
+              const options = similarPlayers.map((p, i) => 
+                `${i+1}. ${p.Name} ${p.GuildName ? `[${p.GuildName}]` : '(No Guild)'}`
+              ).join('\n');
+              
+              return interaction.editReply({
+                content: `Multiple similar players found:\n${options}\n\n` +
+                        'Please either:\n' +
+                        '1. Use the exact character name\n' +
+                        '2. Use the Albion ID (/whois in game)\n' +
+                        '3. Register their guild first using `/guild add`'
+              });
+            }
+            
+            return interaction.editReply({ 
+              content: `❌ No player found matching "${albionName}"`
+            });
+          }
+        }
 
         const existing = await Player.findOne({ where: { discordId: user.id } });
         if (existing) {
@@ -228,6 +226,39 @@ module.exports = {
           killFame: playerInfo.KillFame || 0,
           deathFame: playerInfo.DeathFame || 0,
         });
+
+        // Send welcome message to general chat
+        const welcomeChannelId = '1376085914870222919'; // Replace with your actual channel ID
+        const welcomeChannel = interaction.guild.channels.cache.get(welcomeChannelId);
+        
+        if (welcomeChannel) {
+          try {
+            const adminMentions = [
+              '1332768976282849360',
+              '270443637865709570',
+              '688009786276708415',
+              '1290995422067949593'
+            ].map(id => `<@${id}>`).join(', ');
+
+            await welcomeChannel.send(`
+Welcome to Vicarious, <@${user.id}>!
+
+Please refer to channel <#1380027924173946881>. We recommend you follow the Mist Tutorial.
+
+Please make sure to check channel <#1400474742607319172> as it contains details about alliance.
+
+Any questions? Please type in this channel as our friendly community is there to support you. 
+Do you need activity? Ask! We are all working people. Nobody is forced to do content.
+
+Have fun! Enjoy!
+
+Leadership: ${adminMentions}
+            `);
+            console.log('Admin-triggered welcome message sent');
+          } catch (error) {
+            console.error('Failed to send admin-triggered welcome message:', error);
+          }
+        }
 
         return interaction.editReply({
           embeds: [
