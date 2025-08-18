@@ -56,6 +56,7 @@ module.exports = {
       let guildData = null;
       let guildNotice = '';
       let shouldNotifyMods = false;
+      let shouldWelcome = false; // <-- Added this declaration
 
       if (playerInfo.GuildId) {
         console.log(`Checking guild registration: ${playerInfo.GuildName} (${playerInfo.GuildId})`);
@@ -69,10 +70,12 @@ module.exports = {
         if (!guildData) {
           shouldNotifyMods = true;
           guildNotice = '\n\n⚠️ Your guild is not registered with this server.';
+        } else {
+          shouldWelcome = true; // <-- Only welcome if in our registered guild
         }
       } else {
         console.log('Player has no guild affiliation');
-		shouldNotifyMods = true;
+        shouldNotifyMods = true;
         guildNotice = '\n\nℹ️ You are not currently in an Albion guild.';
       }
 
@@ -179,38 +182,40 @@ module.exports = {
         }
       }
 
-		// Send welcome message to general chat
-		const welcomeChannelId = '1376085914870222919'; // Replace with your actual channel ID
-		const welcomeChannel = interaction.guild.channels.cache.get(welcomeChannelId);
+      // Send welcome message only if shouldWelcome is true
+      if (shouldWelcome) {
+        const welcomeChannelId = '1376085914870222919';
+        const welcomeChannel = interaction.guild.channels.cache.get(welcomeChannelId);
 
-		if (welcomeChannel) {
-		try {
-		  const adminMentions = [
-			'1332768976282849360',
-			'270443637865709570',
-			'688009786276708415',
-			'1290995422067949593'
-		  ].map(id => `<@${id}>`).join(', ');
+        if (welcomeChannel) {
+          try {
+            const adminMentions = [
+              '1332768976282849360',
+              '270443637865709570',
+              '688009786276708415',
+              '1290995422067949593'
+            ].map(id => `<@${id}>`).join(', ');
 
-		  await welcomeChannel.send(`
-		Welcome to Vicarious, <@${discordId}>!
+            await welcomeChannel.send(`
+Welcome to Vicarious, <@${discordId}>!
 
-		Please refer to channel <#1380027924173946881>. We recommend you follow the Mist Tutorial.
+Please refer to channel <#1380027924173946881>. We recommend you follow the Mist Tutorial.
 
-		Please make sure to check channel <#1400474742607319172> as it contains details about alliance.
+Please make sure to check channel <#1400474742607319172> as it contains details about alliance.
 
-		Any questions? Please type in this channel as our friendly community is there to support you. 
-		Do you need activity? Ask! We are all working people. Nobody is forced to do content.
+Any questions? Please type in this channel as our friendly community is there to support you. 
+Do you need activity? Ask! We are all working people. Nobody is forced to do content.
 
-		Have fun! Enjoy!
+Have fun! Enjoy!
 
-		Leadership: ${adminMentions}
-		  `);
-		  console.log('Welcome message sent');
-		} catch (error) {
-		  console.error('Failed to send welcome message:', error);
-		}
-		}
+Leadership: ${adminMentions}
+            `);
+            console.log('Welcome message sent');
+          } catch (error) {
+            console.error('Failed to send welcome message:', error);
+          }
+        }
+      }
 
       // Save/update player in database
       console.log('Saving player data...');
